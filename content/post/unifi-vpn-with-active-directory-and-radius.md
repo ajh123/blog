@@ -23,7 +23,7 @@ Here is a list of potential RADIUS servers you can use:
 A RADIUS profile is required to tell UniFi where to find the RADIUS server. To create a RADIUS profile, open the Network app and navigate to **Settings** > **Profiles** > **RADIUS**.
 At the bottom of the table, click **Create New**.
 
-![](./1728127006970-144.png)  
+![](/post_images/unifi-vpn-with-active-directory-and-radius/1728127006970-144.png)  
 **Figure 1. A screenshot of the UniFi create RADIUS profile page**
 
 Once you have done that, you will get the form as shown in Figure 1.
@@ -41,7 +41,7 @@ Once you have done that, make sure to click **Apply Changes** at the bottom.
 
 You can create a VPN on any UniFi Gateway by using a built-in VPN server. To do this, open the UniFi Network app, and navigate to **Settings** > **VPN** > **VPN Server**. Once you have done this, click **Create New** at the bottom of the table.
 
-![](./1728130538628-166.png)  
+![](/post_images/unifi-vpn-with-active-directory-and-radius/1728130538628-166.png)  
 **Figure 2. UniFi create VPN page**
 
 When you have done that, you will get another form, as shown in Figure 2.
