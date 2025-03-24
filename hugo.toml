@@ -1,0 +1,27 @@
+baseURL = "https://ajh123.github.io/"
+languageCode = "en-gb"
+title = "ajh123's blog"
+theme = "github-style"
+
+[params]
+  author = "ajh123 (Samuel Hulme)"
+  github = "ajh123"
+  description = "A blog about programming, technology and other things."
+  utterances = "ajh123/ajh123.github.io"
+  rss = true
+  location = "United Kingdom"
+  headerIcon = "/images/avatar.jpg"
+  avatar = "/images/avatar.jpg"
+  url = "https://ajh123.github.io/"
+  enableSearch = true
+
+[frontmatter]
+  lastmod = ["lastmod", ":fileModTime", ":default"]
+
+[outputs]
+  home = ["html", "json"]
+
+[outputFormats.json]
+  mediaType = "application/json"
+  baseName = "index"
+  isPlainText = false
