@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Authentication on ajh123&#39;s blog</title>
+    <link>https://ajh123.github.io/tags/authentication/</link>
+    <description>Recent content in Authentication on ajh123&#39;s blog</description>
+    <generator>Hugo</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Mon, 24 Mar 2025 15:21:26 +0000</lastBuildDate>
+    <atom:link href="https://ajh123.github.io/tags/authentication/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Controlling Which Vlans UniFi Teleport Can Use</title>
+      <link>https://ajh123.github.io/post/controlling-which-vlans-unifi-teleport-can-use/</link>
+      <pubDate>Wed, 09 Oct 2024 14:00:53 +0000</pubDate>
+      <guid>https://ajh123.github.io/post/controlling-which-vlans-unifi-teleport-can-use/</guid>
+      <description>&lt;p&gt;In this guide we will learn how to configure which IPs and VLANs users connected via UniFi Teleport can access.&lt;/p&gt;&#xA;&lt;h2 id=&#34;step-1-identify-the-ip-range-that-teleport-uses&#34;&gt;Step 1. Identify the IP range that Teleport uses.&lt;/h2&gt;&#xA;&lt;p&gt;In order to know who we are controlling we need the know the IP range. One way to find this is to inspect a device connected with UniFi Teleport.&lt;/p&gt;&#xA;&lt;p&gt;To do this, open the Network app and navigate to &lt;strong&gt;Client Devices&lt;/strong&gt;. On this page you will find a list of all the clients and their IP address. Clients that are connected with UniFi Teleport will have the connection type of &amp;ldquo;VPN&amp;rdquo;. In Figure 1 you can see I have two devices one with the IP &amp;ldquo;&lt;code&gt;192.168.2.3&lt;/code&gt;&amp;rdquo; and &amp;ldquo;&lt;code&gt;192.168.2.2&lt;/code&gt;&amp;rdquo;, so, the subnet for this Teleport instance would be &amp;ldquo;&lt;code&gt;192.168.2.0/24&lt;/code&gt;&amp;rdquo;.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>UniFi Vpn With Active Directory and Radius</title>
+      <link>https://ajh123.github.io/post/unifi-vpn-with-active-directory-and-radius/</link>
+      <pubDate>Sat, 05 Oct 2024 14:00:11 +0000</pubDate>
+      <guid>https://ajh123.github.io/post/unifi-vpn-with-active-directory-and-radius/</guid>
+      <description>&lt;p&gt;In this guide we will set up a VPN on a UniFi network that uses a RADIUS server that is backed by Active Directory for authentication.&lt;/p&gt;&#xA;&lt;h2 id=&#34;step-1-set-up-a-radius-server&#34;&gt;Step 1. Set up a RADIUS server&lt;/h2&gt;&#xA;&lt;p&gt;To use RADIUS for authentication, you must have a RADIUS server configured.&#xA;The RADIUS server built into UniFi cannot be configured to use Active Directory, so an external RADIUS server is required.&#xA;Here is a list of potential RADIUS servers you can use:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Configuring Next Cloud to Use Samba</title>
+      <link>https://ajh123.github.io/post/configuring-nextcloud-to-use-samaba/</link>
+      <pubDate>Thu, 21 Dec 2023 14:03:02 +0000</pubDate>
+      <guid>https://ajh123.github.io/post/configuring-nextcloud-to-use-samaba/</guid>
+      <description>&lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;&#xA;&lt;p&gt;The following applications need to be installed on your system&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Next Cloud&lt;/li&gt;&#xA;&lt;li&gt;A Samba domain controller.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;The guide will assume some details:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Hostname: &lt;code&gt;ipa.minersonline.lan&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;Storage path: &lt;code&gt;/DATA/AppData/freeipa-server&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;Server IP: &lt;code&gt;10.0.0.97&lt;/code&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;You may changes these assumptions based on your requirements.&lt;/p&gt;&#xA;&lt;h2 id=&#34;steps&#34;&gt;Steps&lt;/h2&gt;&#xA;&lt;h3 id=&#34;1-step-up-a-system-user-account&#34;&gt;1. Step up a System User Account&lt;/h3&gt;&#xA;&lt;p&gt;The System User Account is a dedicated account that the Next Cloud instance will use to get user information from your Sa,ba server. Call the user &lt;code&gt;Next Cloudsystemuser&lt;/code&gt;, and set a secure password and note it down.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Configuring Next Cloud to Use Free IPA</title>
+      <link>https://ajh123.github.io/post/configuring-nextcloud-to-use-freeipa/</link>
+      <pubDate>Sat, 16 Dec 2023 14:04:26 +0000</pubDate>
+      <guid>https://ajh123.github.io/post/configuring-nextcloud-to-use-freeipa/</guid>
+      <description>&lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;&#xA;&lt;p&gt;The following applications need to be installed on your system&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Next Cloud&lt;/li&gt;&#xA;&lt;li&gt;Free IPA.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;The guide will assume some details:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Free IPA server hostname: &lt;code&gt;ipa.minersonline.lan&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;Free IPA realm domain: &lt;code&gt;mineronline.lan&lt;/code&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;You may changes these assumptions based on your requirements.&lt;/p&gt;&#xA;&lt;h2 id=&#34;steps&#34;&gt;Steps&lt;/h2&gt;&#xA;&lt;h3 id=&#34;1-step-up-a-system-user-account&#34;&gt;1. Step up a System User Account&lt;/h3&gt;&#xA;&lt;p&gt;The System User Account is a dedicated account that the Next Cloud instance will use to get user information from your Free IPA server.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Installing Free IPA in Docker</title>
+      <link>https://ajh123.github.io/post/installing-freeipa-in-docker/</link>
+      <pubDate>Fri, 15 Dec 2023 14:03:52 +0000</pubDate>
+      <guid>https://ajh123.github.io/post/installing-freeipa-in-docker/</guid>
+      <description>&lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;&#xA;&lt;p&gt;The following applications need to be installed on your system:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Docker&lt;/li&gt;&#xA;&lt;li&gt;Git&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;The guide will assume some details:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Hostname: &lt;code&gt;ipa.minersonline.lan&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;Storage path: &lt;code&gt;/DATA/AppData/Free IPA-server&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;Server IP: &lt;code&gt;10.0.0.97&lt;/code&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;You may changes these assumptions based on your requirements. The Hostname will determine the domain name of the Free IPA setup, in this example &lt;code&gt;minersonline.local&lt;/code&gt;. The Storage path will determine where Free IPA will store its data.&lt;/p&gt;&#xA;&lt;p&gt;I&amp;rsquo;m running these commands on an Ubuntu 22.04 system. The commands are probably the same on your system.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script type="application/javascript" src='https://ajh123.github.io/js/theme-mode.js'></script>
+    <link rel="stylesheet" href='https://ajh123.github.io/css/frameworks.min.css' />
+    <link rel="stylesheet" href='https://ajh123.github.io/css/github.min.css' />
+    <link rel="stylesheet" href='https://ajh123.github.io/css/github-style.css' />
+    <link rel="stylesheet" href='https://ajh123.github.io/css/light.css' />
+    <link rel="stylesheet" href='https://ajh123.github.io/css/dark.css' />
+    <link rel="stylesheet" href='https://ajh123.github.io/css/syntax.css' />
+    <title>Installing Free IPA in Docker - ajh123&#39;s blog</title>
+    
+    <link rel="icon" type="image/x-icon" href='https://ajh123.github.io/images/favicon.ico'>
+    
+    <meta name="theme-color" content="#1e2327">
+
+    
+    
+
+    
+    <meta name="description"
+  content="Prerequisites The following applications need to be installed on your system:
+Docker Git The guide will assume some details:
+Hostname: ipa.minersonline.lan Storage path: /DATA/AppData/Free IPA-server Server IP: 10.0.0.97 You may changes these assumptions based on your requirements. The Hostname will determine the domain name of the Free IPA setup, in this example minersonline.local. The Storage path will determine where Free IPA will store its data.
+I&rsquo;m running these commands on an Ubuntu 22.04 system. The commands are probably the same on your system.
+" />
+<meta name="keywords"
+  content='' />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://ajh123.github.io/post/installing-freeipa-in-docker/" />
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Installing Free IPA in Docker - ajh123&#39;s blog" />
+<meta name="twitter:description"
+  content="Prerequisites The following applications need to be installed on your system:
+Docker Git The guide will assume some details:
+Hostname: ipa.minersonline.lan Storage path: /DATA/AppData/Free IPA-server Server IP: 10.0.0.97 You may changes these assumptions based on your requirements. The Hostname will determine the domain name of the Free IPA setup, in this example minersonline.local. The Storage path will determine where Free IPA will store its data.
+I&rsquo;m running these commands on an Ubuntu 22.04 system. The commands are probably the same on your system.
+" />
+<meta name="twitter:site" content="https://ajh123.github.io/" />
+<meta name="twitter:creator" content="" />
+<meta name="twitter:image"
+  content="https://ajh123.github.io/">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Installing Free IPA in Docker - ajh123&#39;s blog">
+<meta property="og:description"
+  content="Prerequisites The following applications need to be installed on your system:
+Docker Git The guide will assume some details:
+Hostname: ipa.minersonline.lan Storage path: /DATA/AppData/Free IPA-server Server IP: 10.0.0.97 You may changes these assumptions based on your requirements. The Hostname will determine the domain name of the Free IPA setup, in this example minersonline.local. The Storage path will determine where Free IPA will store its data.
+I&rsquo;m running these commands on an Ubuntu 22.04 system. The commands are probably the same on your system.
+" />
+<meta property="og:url" content="https://ajh123.github.io/post/installing-freeipa-in-docker/" />
+<meta property="og:site_name" content="Installing Free IPA in Docker" />
+<meta property="og:image"
+  content="https://ajh123.github.io/">
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+<meta property="article:published_time" content="2023-12-15 14:03:52 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+
+<body>
+  <div style="position: relative">
+  <header class="Header js-details-container Details px-3 px-md-4 px-lg-5 flex-wrap flex-md-nowrap open Details--on">
+    <div class="Header-item mobile-none" style="margin-top: -4px; margin-bottom: -4px;">
+      <a class="Header-link" href="https://ajh123.github.io/">
+        <img class="octicon" height="32" width="32" src="/images/avatar.jpg">
+      </a>
+    </div>
+    <div class="Header-item d-md-none">
+      <button class="Header-link btn-link js-details-target" type="button"
+        onclick="document.querySelector('#header-search').style.display = document.querySelector('#header-search').style.display == 'none'? 'block': 'none'">
+        <svg height="24" class="octicon octicon-three-bars" viewBox="0 0 16 16" version="1.1" width="24">
+          <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z">
+          </path>
+        </svg>
+      </button>
+    </div>
+    <div style="display: none;" id="header-search"
+      class="Header-item Header-item--full flex-column flex-md-row width-full flex-order-2 flex-md-order-none mr-0 mr-md-3 mt-3 mt-md-0 Details-content--hidden-not-important d-md-flex">
+      <div
+        class="Header-search header-search flex-auto js-site-search position-relative flex-self-stretch flex-md-self-auto mb-3 mb-md-0 mr-0 mr-md-3 scoped-search site-scoped-search js-jump-to">
+        <div class="position-relative">
+          
+          <form target="_blank" id="search-form" action="" accept-charset="UTF-8" method="get"
+            autocomplete="off">
+            <label
+              class="Header-search-label form-control input-sm header-search-wrapper p-0 js-chromeless-input-container header-search-wrapper-jump-to position-relative d-flex flex-justify-between flex-items-center">
+              <input type="text"
+                class="Header-search-input form-control input-sm header-search-input jump-to-field js-jump-to-field js-site-search-focus js-site-search-field is-clearable"
+                name="q" value="" placeholder="Search" autocomplete="off">
+            </label>
+          </form>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="Header-item Header-item--full flex-justify-center d-md-none position-relative">
+      <a class="Header-link " href="https://ajh123.github.io/">
+        <img class="octicon octicon-mark-github v-align-middle" height="32" width="32" src="/images/avatar.jpg">
+      </a>
+    </div>
+    <div class="Header-item" style="margin-right: 0;">
+      <a href="javascript:void(0)" class="Header-link no-select" onclick="switchTheme()">
+        <svg style="fill: var(--color-profile-color-modes-toggle-moon);" class="no-select" viewBox="0 0 16 16"
+          version="1.1" width="16" height="16">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M4.52208 7.71754C7.5782 7.71754 10.0557 5.24006 10.0557 2.18394C10.0557 1.93498 10.0392 1.68986 10.0074 1.44961C9.95801 1.07727 10.3495 0.771159 10.6474 0.99992C12.1153 2.12716 13.0615 3.89999 13.0615 5.89383C13.0615 9.29958 10.3006 12.0605 6.89485 12.0605C3.95334 12.0605 1.49286 10.001 0.876728 7.24527C0.794841 6.87902 1.23668 6.65289 1.55321 6.85451C2.41106 7.40095 3.4296 7.71754 4.52208 7.71754Z">
+          </path>
+        </svg>
+      </a>
+    </div>
+  </header>
+</div>
+
+  <div id="search-result" class="container-lg px-3 new-discussion-timeline" style="display: none;">
+</div>
+
+  
+<div class="application-main">
+  <div>
+  <main>
+    <div class="gisthead pagehead bg-gray-light pb-0 pt-3 mb-4">
+      <div class="px-0">
+        <div class="mb-3 d-flex px-3 px-md-3 px-lg-5">
+          <div class="flex-auto min-width-0 width-fit mr-3">
+            <div class="d-flex">
+              <div class="d-none d-md-block">
+                <a class="avatar mr-2 flex-shrink-0" href="https://ajh123.github.io/">
+                  <img class=" avatar-user"
+                    src="/images/avatar.jpg"
+                    width="32" height="32"></a>
+              </div>
+              <div class="d-flex flex-column">
+                <h1 class="break-word f3 text-normal mb-md-0 mb-1">
+                  <span class="author">
+                    <a href="https://ajh123.github.io/">ajh123 (Samuel Hulme)</a>
+                  </span>
+                  <span class="path-divider">/</span>
+                  <strong class="css-truncate css-truncate-target mr-1" style="max-width: 410px">
+                    <a href="https://ajh123.github.io/post/installing-freeipa-in-docker/">Installing Free IPA in Docker</a>
+                  </strong>
+                </h1>
+                <div class="note m-0">
+                  Created <relative-time datetime="Fri, 15 Dec 2023 14:03:52 &#43;0000"
+                    class="no-wrap">
+                    Fri, 15 Dec 2023 14:03:52 &#43;0000</relative-time>
+
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-lg px-3 new-discussion-timeline">
+      <div class="repository-content gist-content">
+        <div>
+          <div class="js-gist-file-update-container js-task-list-container file-box">
+            <div id="file-pytest" class="file my-2">
+              <div id="post-header" class="file-header d-flex flex-md-items-center flex-items-start sticky-header" style="z-index: 2">
+                <div class="file-info d-flex flex-md-items-center flex-items-start flex-order-1 flex-auto">
+                  <div class="text-mono f6 flex-auto pr-3 flex-order-2 flex-md-order-1 mt-2 mt-md-0">
+                    
+                    <summary id="toc-toggle" onclick="clickToc()" class="btn btn-octicon m-0 mr-2 p-2">
+                      <svg aria-hidden="true" viewBox="0 0 16 16" height="16" width="16" class="octicon octicon-list-unordered">
+                        <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+                      </svg>
+                    </summary>
+                    <details-menu class="SelectMenu" id="toc-details" style="display: none;">
+                      <div class="SelectMenu-modal rounded-3 mt-1" style="max-height: 340px;">
+                        <div class="SelectMenu-list SelectMenu-list--borderless p-2" style="overscroll-behavior: contain;" id="toc-list">
+                        </div>
+                      </div>
+                    </details-menu>
+                      586 Words
+                    
+
+                  </div>
+                  <div class="file-actions flex-order-2 pt-0">
+                    
+                    
+                    <a class="muted-link mr-3" href="/tags/linux">
+                      <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                        <path fill-rule="evenodd"
+                          d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                        </path>
+                      </svg>
+                      Linux
+                    </a>
+                    
+                    <a class="muted-link mr-3" href="/tags/docker">
+                      <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                        <path fill-rule="evenodd"
+                          d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                        </path>
+                      </svg>
+                      Docker
+                    </a>
+                    
+                    <a class="muted-link mr-3" href="/tags/authentication">
+                      <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                        <path fill-rule="evenodd"
+                          d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                        </path>
+                      </svg>
+                      Authentication
+                    </a>
+                    
+                    <a class="muted-link mr-3" href="/tags/free-ipa">
+                      <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                        <path fill-rule="evenodd"
+                          d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                        </path>
+                      </svg>
+                      Free IPA
+                    </a>
+                    
+                    
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="Box-body px-5 pb-5" style="z-index: 1">
+                <article class="markdown-body entry-content container-lg"><h2 id="prerequisites">Prerequisites</h2>
+<p>The following applications need to be installed on your system:</p>
+<ul>
+<li>Docker</li>
+<li>Git</li>
+</ul>
+<p>The guide will assume some details:</p>
+<ul>
+<li>Hostname: <code>ipa.minersonline.lan</code></li>
+<li>Storage path: <code>/DATA/AppData/Free IPA-server</code></li>
+<li>Server IP: <code>10.0.0.97</code></li>
+</ul>
+<p>You may changes these assumptions based on your requirements. The Hostname will determine the domain name of the Free IPA setup, in this example <code>minersonline.local</code>. The Storage path will determine where Free IPA will store its data.</p>
+<p>I&rsquo;m running these commands on an Ubuntu 22.04 system. The commands are probably the same on your system.</p>
+<h3 id="1-setup-hostname">1. Setup hostname</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo hostnamectl set-hostname ipa.minersonline.lan
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo nano /etc/hosts
+</span></span></code></pre></div><p>Add the line <code>10.0.0.97 ipa.minersonline.lan ipa</code> to the top of the file but change <code>10.0.0.97</code> to your machine&rsquo;s IP</p>
+<p>Press <code>Control + X</code> then <code>Y</code> to save the file.</p>
+<h3 id="2-configure-your-dns">2. Configure your DNS</h3>
+<p>On your router or your DNS server (like PiHole) add the <code>ipa.minersonline.lan</code> hostname to match the IP of your machine.</p>
+<blockquote>
+<p>[!NOTE]
+This step is different for different models of routers or DNS servers, please consult their documentation.</p></blockquote>
+<h2 id="steps">Steps</h2>
+<h3 id="1-choose-a-container">1. Choose a container</h3>
+<p>Chose a container from the [Free IPA Docker Hub](<a href="https://hub.docker.com/r/Free">https://hub.docker.com/r/Free</a> IPA/Free IPA-server/tags). I&rsquo;ve chosen <code>fedora-rawhide</code>.</p>
+<h3 id="2-perform-the-installation">2. Perform the installation</h3>
+<p>The following command will run the image we built in the last step. This will run the installation process.</p>
+<p>I recommend answering <code>no</code> to <code>Do you want to configure integrated DNS (BIND)?</code> because the BIND dns server caused problems during my installation.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run --name Free IPA-server -ti <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>   --read-only <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>   -h ipa.minersonline.lan -p 53:53/udp -p 53:53 -p 80:80 -p 443:443 -p 389:389 -p 636:636 -p 88:88 -p 464:464 -p 88:88/udp -p 464:464/udp -p 123:123/udp <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>   --sysctl net.ipv6.conf.all.disable_ipv6<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>   -v /sys/fs/cgroup/Free IPA.scope:/sys/fs/cgroup:ro <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>   -v /DATA/AppData/Free IPA-server:/data:Z <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>   --tmpfs /run --tmpfs /tmp Free IPA/Free IPA-server:fedora-rawhide
+</span></span></code></pre></div><blockquote>
+<p>[!NOTE]
+If you get any errors please see the <a href="#errors">errors section</a> for your error.</p></blockquote>
+<h3 id="3-delete-the-existing-container">3. Delete the existing container</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker stop Free IPA-server
+</span></span><span style="display:flex;"><span>docker rm Free IPA-server
+</span></span></code></pre></div><h3 id="4-restart-the-container">4. Restart the container</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -d --name Free IPA-server -ti <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>   --read-only <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>   -h ipa.minersonline.lan -p 53:53/udp -p 53:53 -p 80:80 -p 443:443 -p 389:389 -p 636:636 -p 88:88 -p 464:464 -p 88:88/udp -p 464:464/udp -p 123:123/udp <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>   --sysctl net.ipv6.conf.all.disable_ipv6<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>   -v /sys/fs/cgroup/Free IPA.scope:/sys/fs/cgroup:ro <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>   -v /DATA/AppData/Free IPA-server:/data:Z <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>   --restart unless-stopped <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>   --tmpfs /run --tmpfs /tmp Free IPA/Free IPA-server:fedora-rawhide
+</span></span></code></pre></div><blockquote>
+<p>[!NOTE]
+If you get any errors please see the <a href="#errors">errors section</a> for your error.</p></blockquote>
+<h2 id="errors">Errors</h2>
+<h3 id="failed-to-create-initscope-control-group-read-only-file-system"><code>Failed to create /init.scope control group: Read-only file system</code></h3>
+<p>If you get the error:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>Failed to create /init.scope control group: Read-only file system
+</span></span><span style="display:flex;"><span>Failed to allocate manager object: Read-only file system
+</span></span><span style="display:flex;"><span>[!!!!!!] Failed to allocate manager object.
+</span></span><span style="display:flex;"><span>Exiting PID 1...
+</span></span></code></pre></div><h4 id="1-delete-existing-containers--data">1. Delete existing containers / data</h4>
+<p><code>docker rm Free IPA-server</code> and <code>rm -rf /DATA/AppData/Free IPA-server</code></p>
+<h4 id="2-perform-the-installation-again">2. Perform the installation again</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run --name Free IPA-server -ti <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>   --read-only <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>   -h ipa.minersonline.lan -p 53:53/udp -p 53:53 -p 80:80 -p 443:443 -p 389:389 -p 636:636 -p 88:88 -p 464:464 -p 88:88/udp -p 464:464/udp -p 123:123/udp <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>   --sysctl net.ipv6.conf.all.disable_ipv6<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>   --cgroupns host <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>   --security-opt seccomp<span style="color:#f92672">=</span>unconfined <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>   -v /sys/fs/cgroup/Free IPA.scope:/sys/fs/cgroup:rw <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>   -v /DATA/AppData/Free IPA-server:/data:Z <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>   --privileged <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>   --tmpfs /run --tmpfs /tmp Free IPA/Free IPA-server:fedora-rawhide --no-ntp
+</span></span></code></pre></div><h4 id="3-delete-the-new-container">3. Delete the new container</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker stop Free IPA-server
+</span></span><span style="display:flex;"><span>docker rm Free IPA-server
+</span></span></code></pre></div><h4 id="4-restart-the-container-again">4. Restart the container again</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -d --name Free IPA-server -ti <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>   --read-only <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>   -h ipa.minersonline.lan -p 53:53/udp -p 53:53 -p 80:80 -p 443:443 -p 389:389 -p 636:636 -p 88:88 -p 464:464 -p 88:88/udp -p 464:464/udp -p 123:123/udp <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>   --sysctl net.ipv6.conf.all.disable_ipv6<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>   --cgroupns host <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>   --security-opt seccomp<span style="color:#f92672">=</span>unconfined <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>   -v /sys/fs/cgroup/Free IPA.scope:/sys/fs/cgroup:rw <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>   -v /DATA/AppData/Free IPA-server:/data:Z <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>   --restart unless-stopped <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>   --privileged <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>   --tmpfs /run --tmpfs /tmp Free IPA/Free IPA-server:fedora-rawhide --no-ntp
+</span></span></code></pre></div></article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script type="application/javascript" src='https://ajh123.github.io/js/toc.js'></script>
+<link rel="stylesheet" href='https://ajh123.github.io/css/toc.css' />
+
+  
+</div>
+
+  <div class="footer container-xl width-full p-responsive">
+  <div
+    class="position-relative d-flex flex-row-reverse flex-lg-row flex-wrap flex-lg-nowrap flex-justify-center flex-lg-justify-between flex-sm-items-center pt-6 pb-2 mt-6 f6 text-gray border-top border-gray-light ">
+    <a aria-label="Homepage" title="GitHub" class="footer-octicon d-none d-lg-block mr-lg-4" href="https://ajh123.github.io/">
+      <svg height="24" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="24">
+        <path fill-rule="evenodd"
+          d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+        </path>
+      </svg>
+    </a>
+    <ul class="list-style-none d-flex flex-wrap col-12 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
+      
+      <li class="mr-3 mr-lg-0">Theme by <a href='https://github.com/MeiK2333/github-style'>github-style</a></li>
+      
+      <li class="mr-3 mr-lg-0">GitHub and the Invertocat logo are trademarks of <a href="https://github.com/">GitHub, Inc.</a></li>
+    </ul>
+  </div>
+  <div class="d-flex flex-justify-center pb-6">
+    <span class="f6 text-gray-light"></span>
+  </div>
+
+
+</div>
+
+</body>
+
+<script type="application/javascript" src="https://ajh123.github.io/js/github-style.js"></script>
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.min.js"></script>
+<script type="application/javascript" src='https://ajh123.github.io/js/search.js'></script>
+
+
+
+</html>

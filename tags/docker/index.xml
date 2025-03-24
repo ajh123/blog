@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docker on ajh123&#39;s blog</title>
+    <link>https://ajh123.github.io/tags/docker/</link>
+    <description>Recent content in Docker on ajh123&#39;s blog</description>
+    <generator>Hugo</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Mon, 24 Mar 2025 15:21:26 +0000</lastBuildDate>
+    <atom:link href="https://ajh123.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Installing Free IPA in Docker</title>
+      <link>https://ajh123.github.io/post/installing-freeipa-in-docker/</link>
+      <pubDate>Fri, 15 Dec 2023 14:03:52 +0000</pubDate>
+      <guid>https://ajh123.github.io/post/installing-freeipa-in-docker/</guid>
+      <description>&lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;&#xA;&lt;p&gt;The following applications need to be installed on your system:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Docker&lt;/li&gt;&#xA;&lt;li&gt;Git&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;The guide will assume some details:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Hostname: &lt;code&gt;ipa.minersonline.lan&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;Storage path: &lt;code&gt;/DATA/AppData/Free IPA-server&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;Server IP: &lt;code&gt;10.0.0.97&lt;/code&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;You may changes these assumptions based on your requirements. The Hostname will determine the domain name of the Free IPA setup, in this example &lt;code&gt;minersonline.local&lt;/code&gt;. The Storage path will determine where Free IPA will store its data.&lt;/p&gt;&#xA;&lt;p&gt;I&amp;rsquo;m running these commands on an Ubuntu 22.04 system. The commands are probably the same on your system.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

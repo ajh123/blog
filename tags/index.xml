@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on ajh123&#39;s blog</title>
+    <link>https://ajh123.github.io/tags/</link>
+    <description>Recent content in Tags on ajh123&#39;s blog</description>
+    <generator>Hugo</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Mon, 24 Mar 2025 15:21:26 +0000</lastBuildDate>
+    <atom:link href="https://ajh123.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Authentication</title>
+      <link>https://ajh123.github.io/tags/authentication/</link>
+      <pubDate>Wed, 09 Oct 2024 14:00:53 +0000</pubDate>
+      <guid>https://ajh123.github.io/tags/authentication/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>UniFi</title>
+      <link>https://ajh123.github.io/tags/unifi/</link>
+      <pubDate>Wed, 09 Oct 2024 14:00:53 +0000</pubDate>
+      <guid>https://ajh123.github.io/tags/unifi/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Radius</title>
+      <link>https://ajh123.github.io/tags/radius/</link>
+      <pubDate>Sat, 05 Oct 2024 14:00:11 +0000</pubDate>
+      <guid>https://ajh123.github.io/tags/radius/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Linux</title>
+      <link>https://ajh123.github.io/tags/linux/</link>
+      <pubDate>Thu, 21 Dec 2023 14:03:02 +0000</pubDate>
+      <guid>https://ajh123.github.io/tags/linux/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Next Cloud</title>
+      <link>https://ajh123.github.io/tags/next-cloud/</link>
+      <pubDate>Thu, 21 Dec 2023 14:03:02 +0000</pubDate>
+      <guid>https://ajh123.github.io/tags/next-cloud/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Samba</title>
+      <link>https://ajh123.github.io/tags/samba/</link>
+      <pubDate>Thu, 21 Dec 2023 14:03:02 +0000</pubDate>
+      <guid>https://ajh123.github.io/tags/samba/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Free IPA</title>
+      <link>https://ajh123.github.io/tags/free-ipa/</link>
+      <pubDate>Sat, 16 Dec 2023 14:04:26 +0000</pubDate>
+      <guid>https://ajh123.github.io/tags/free-ipa/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Docker</title>
+      <link>https://ajh123.github.io/tags/docker/</link>
+      <pubDate>Fri, 15 Dec 2023 14:03:52 +0000</pubDate>
+      <guid>https://ajh123.github.io/tags/docker/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

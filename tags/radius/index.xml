@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Radius on ajh123&#39;s blog</title>
+    <link>https://ajh123.github.io/tags/radius/</link>
+    <description>Recent content in Radius on ajh123&#39;s blog</description>
+    <generator>Hugo</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Mon, 24 Mar 2025 15:21:26 +0000</lastBuildDate>
+    <atom:link href="https://ajh123.github.io/tags/radius/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>UniFi Vpn With Active Directory and Radius</title>
+      <link>https://ajh123.github.io/post/unifi-vpn-with-active-directory-and-radius/</link>
+      <pubDate>Sat, 05 Oct 2024 14:00:11 +0000</pubDate>
+      <guid>https://ajh123.github.io/post/unifi-vpn-with-active-directory-and-radius/</guid>
+      <description>&lt;p&gt;In this guide we will set up a VPN on a UniFi network that uses a RADIUS server that is backed by Active Directory for authentication.&lt;/p&gt;&#xA;&lt;h2 id=&#34;step-1-set-up-a-radius-server&#34;&gt;Step 1. Set up a RADIUS server&lt;/h2&gt;&#xA;&lt;p&gt;To use RADIUS for authentication, you must have a RADIUS server configured.&#xA;The RADIUS server built into UniFi cannot be configured to use Active Directory, so an external RADIUS server is required.&#xA;Here is a list of potential RADIUS servers you can use:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

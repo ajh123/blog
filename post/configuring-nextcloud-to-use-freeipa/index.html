@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script type="application/javascript" src='https://ajh123.github.io/js/theme-mode.js'></script>
+    <link rel="stylesheet" href='https://ajh123.github.io/css/frameworks.min.css' />
+    <link rel="stylesheet" href='https://ajh123.github.io/css/github.min.css' />
+    <link rel="stylesheet" href='https://ajh123.github.io/css/github-style.css' />
+    <link rel="stylesheet" href='https://ajh123.github.io/css/light.css' />
+    <link rel="stylesheet" href='https://ajh123.github.io/css/dark.css' />
+    <link rel="stylesheet" href='https://ajh123.github.io/css/syntax.css' />
+    <title>Configuring Next Cloud to Use Free IPA - ajh123&#39;s blog</title>
+    
+    <link rel="icon" type="image/x-icon" href='https://ajh123.github.io/images/favicon.ico'>
+    
+    <meta name="theme-color" content="#1e2327">
+
+    
+    
+
+    
+    <meta name="description"
+  content="Prerequisites The following applications need to be installed on your system
+Next Cloud Free IPA. The guide will assume some details:
+Free IPA server hostname: ipa.minersonline.lan Free IPA realm domain: mineronline.lan You may changes these assumptions based on your requirements.
+Steps 1. Step up a System User Account The System User Account is a dedicated account that the Next Cloud instance will use to get user information from your Free IPA server.
+" />
+<meta name="keywords"
+  content='' />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://ajh123.github.io/post/configuring-nextcloud-to-use-freeipa/" />
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Configuring Next Cloud to Use Free IPA - ajh123&#39;s blog" />
+<meta name="twitter:description"
+  content="Prerequisites The following applications need to be installed on your system
+Next Cloud Free IPA. The guide will assume some details:
+Free IPA server hostname: ipa.minersonline.lan Free IPA realm domain: mineronline.lan You may changes these assumptions based on your requirements.
+Steps 1. Step up a System User Account The System User Account is a dedicated account that the Next Cloud instance will use to get user information from your Free IPA server.
+" />
+<meta name="twitter:site" content="https://ajh123.github.io/" />
+<meta name="twitter:creator" content="" />
+<meta name="twitter:image"
+  content="https://ajh123.github.io/">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Configuring Next Cloud to Use Free IPA - ajh123&#39;s blog">
+<meta property="og:description"
+  content="Prerequisites The following applications need to be installed on your system
+Next Cloud Free IPA. The guide will assume some details:
+Free IPA server hostname: ipa.minersonline.lan Free IPA realm domain: mineronline.lan You may changes these assumptions based on your requirements.
+Steps 1. Step up a System User Account The System User Account is a dedicated account that the Next Cloud instance will use to get user information from your Free IPA server.
+" />
+<meta property="og:url" content="https://ajh123.github.io/post/configuring-nextcloud-to-use-freeipa/" />
+<meta property="og:site_name" content="Configuring Next Cloud to Use Free IPA" />
+<meta property="og:image"
+  content="https://ajh123.github.io/">
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+<meta property="article:published_time" content="2023-12-16 14:04:26 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+
+<body>
+  <div style="position: relative">
+  <header class="Header js-details-container Details px-3 px-md-4 px-lg-5 flex-wrap flex-md-nowrap open Details--on">
+    <div class="Header-item mobile-none" style="margin-top: -4px; margin-bottom: -4px;">
+      <a class="Header-link" href="https://ajh123.github.io/">
+        <img class="octicon" height="32" width="32" src="/images/avatar.jpg">
+      </a>
+    </div>
+    <div class="Header-item d-md-none">
+      <button class="Header-link btn-link js-details-target" type="button"
+        onclick="document.querySelector('#header-search').style.display = document.querySelector('#header-search').style.display == 'none'? 'block': 'none'">
+        <svg height="24" class="octicon octicon-three-bars" viewBox="0 0 16 16" version="1.1" width="24">
+          <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z">
+          </path>
+        </svg>
+      </button>
+    </div>
+    <div style="display: none;" id="header-search"
+      class="Header-item Header-item--full flex-column flex-md-row width-full flex-order-2 flex-md-order-none mr-0 mr-md-3 mt-3 mt-md-0 Details-content--hidden-not-important d-md-flex">
+      <div
+        class="Header-search header-search flex-auto js-site-search position-relative flex-self-stretch flex-md-self-auto mb-3 mb-md-0 mr-0 mr-md-3 scoped-search site-scoped-search js-jump-to">
+        <div class="position-relative">
+          
+          <form target="_blank" id="search-form" action="" accept-charset="UTF-8" method="get"
+            autocomplete="off">
+            <label
+              class="Header-search-label form-control input-sm header-search-wrapper p-0 js-chromeless-input-container header-search-wrapper-jump-to position-relative d-flex flex-justify-between flex-items-center">
+              <input type="text"
+                class="Header-search-input form-control input-sm header-search-input jump-to-field js-jump-to-field js-site-search-focus js-site-search-field is-clearable"
+                name="q" value="" placeholder="Search" autocomplete="off">
+            </label>
+          </form>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="Header-item Header-item--full flex-justify-center d-md-none position-relative">
+      <a class="Header-link " href="https://ajh123.github.io/">
+        <img class="octicon octicon-mark-github v-align-middle" height="32" width="32" src="/images/avatar.jpg">
+      </a>
+    </div>
+    <div class="Header-item" style="margin-right: 0;">
+      <a href="javascript:void(0)" class="Header-link no-select" onclick="switchTheme()">
+        <svg style="fill: var(--color-profile-color-modes-toggle-moon);" class="no-select" viewBox="0 0 16 16"
+          version="1.1" width="16" height="16">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M4.52208 7.71754C7.5782 7.71754 10.0557 5.24006 10.0557 2.18394C10.0557 1.93498 10.0392 1.68986 10.0074 1.44961C9.95801 1.07727 10.3495 0.771159 10.6474 0.99992C12.1153 2.12716 13.0615 3.89999 13.0615 5.89383C13.0615 9.29958 10.3006 12.0605 6.89485 12.0605C3.95334 12.0605 1.49286 10.001 0.876728 7.24527C0.794841 6.87902 1.23668 6.65289 1.55321 6.85451C2.41106 7.40095 3.4296 7.71754 4.52208 7.71754Z">
+          </path>
+        </svg>
+      </a>
+    </div>
+  </header>
+</div>
+
+  <div id="search-result" class="container-lg px-3 new-discussion-timeline" style="display: none;">
+</div>
+
+  
+<div class="application-main">
+  <div>
+  <main>
+    <div class="gisthead pagehead bg-gray-light pb-0 pt-3 mb-4">
+      <div class="px-0">
+        <div class="mb-3 d-flex px-3 px-md-3 px-lg-5">
+          <div class="flex-auto min-width-0 width-fit mr-3">
+            <div class="d-flex">
+              <div class="d-none d-md-block">
+                <a class="avatar mr-2 flex-shrink-0" href="https://ajh123.github.io/">
+                  <img class=" avatar-user"
+                    src="/images/avatar.jpg"
+                    width="32" height="32"></a>
+              </div>
+              <div class="d-flex flex-column">
+                <h1 class="break-word f3 text-normal mb-md-0 mb-1">
+                  <span class="author">
+                    <a href="https://ajh123.github.io/">ajh123 (Samuel Hulme)</a>
+                  </span>
+                  <span class="path-divider">/</span>
+                  <strong class="css-truncate css-truncate-target mr-1" style="max-width: 410px">
+                    <a href="https://ajh123.github.io/post/configuring-nextcloud-to-use-freeipa/">Configuring Next Cloud to Use Free IPA</a>
+                  </strong>
+                </h1>
+                <div class="note m-0">
+                  Created <relative-time datetime="Sat, 16 Dec 2023 14:04:26 &#43;0000"
+                    class="no-wrap">
+                    Sat, 16 Dec 2023 14:04:26 &#43;0000</relative-time>
+
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-lg px-3 new-discussion-timeline">
+      <div class="repository-content gist-content">
+        <div>
+          <div class="js-gist-file-update-container js-task-list-container file-box">
+            <div id="file-pytest" class="file my-2">
+              <div id="post-header" class="file-header d-flex flex-md-items-center flex-items-start sticky-header" style="z-index: 2">
+                <div class="file-info d-flex flex-md-items-center flex-items-start flex-order-1 flex-auto">
+                  <div class="text-mono f6 flex-auto pr-3 flex-order-2 flex-md-order-1 mt-2 mt-md-0">
+                    
+                    <summary id="toc-toggle" onclick="clickToc()" class="btn btn-octicon m-0 mr-2 p-2">
+                      <svg aria-hidden="true" viewBox="0 0 16 16" height="16" width="16" class="octicon octicon-list-unordered">
+                        <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+                      </svg>
+                    </summary>
+                    <details-menu class="SelectMenu" id="toc-details" style="display: none;">
+                      <div class="SelectMenu-modal rounded-3 mt-1" style="max-height: 340px;">
+                        <div class="SelectMenu-list SelectMenu-list--borderless p-2" style="overscroll-behavior: contain;" id="toc-list">
+                        </div>
+                      </div>
+                    </details-menu>
+                      664 Words
+                    
+
+                  </div>
+                  <div class="file-actions flex-order-2 pt-0">
+                    
+                    
+                    <a class="muted-link mr-3" href="/tags/linux">
+                      <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                        <path fill-rule="evenodd"
+                          d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                        </path>
+                      </svg>
+                      Linux
+                    </a>
+                    
+                    <a class="muted-link mr-3" href="/tags/next-cloud">
+                      <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                        <path fill-rule="evenodd"
+                          d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                        </path>
+                      </svg>
+                      Next Cloud
+                    </a>
+                    
+                    <a class="muted-link mr-3" href="/tags/authentication">
+                      <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                        <path fill-rule="evenodd"
+                          d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                        </path>
+                      </svg>
+                      Authentication
+                    </a>
+                    
+                    <a class="muted-link mr-3" href="/tags/free-ipa">
+                      <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                        <path fill-rule="evenodd"
+                          d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                        </path>
+                      </svg>
+                      Free IPA
+                    </a>
+                    
+                    
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="Box-body px-5 pb-5" style="z-index: 1">
+                <article class="markdown-body entry-content container-lg"><h2 id="prerequisites">Prerequisites</h2>
+<p>The following applications need to be installed on your system</p>
+<ul>
+<li>Next Cloud</li>
+<li>Free IPA.</li>
+</ul>
+<p>The guide will assume some details:</p>
+<ul>
+<li>Free IPA server hostname: <code>ipa.minersonline.lan</code></li>
+<li>Free IPA realm domain: <code>mineronline.lan</code></li>
+</ul>
+<p>You may changes these assumptions based on your requirements.</p>
+<h2 id="steps">Steps</h2>
+<h3 id="1-step-up-a-system-user-account">1. Step up a System User Account</h3>
+<p>The System User Account is a dedicated account that the Next Cloud instance will use to get user information from your Free IPA server.</p>
+<h4 id="1-login-into-the-free-ipa-web-interface">1. Login into the Free IPA web interface</h4>
+<p>Open up your browser and navigate to <code>https://ipa.minersonline.lan</code>. Accept the security warning.</p>
+<p>If not logged in, enter your admin account details. By default, the user name is <code>admin</code> and the password is the one you gave during the Free IPA installation.</p>
+<h4 id="2-add-the-user">2. Add the user</h4>
+<ol>
+<li>
+<p>On the &ldquo;Users&rdquo; page click the &ldquo;Add&rdquo; button.</p>
+</li>
+<li>
+<p>Set the &ldquo;User login&rdquo; to something explanatory, for example: <code>Next Cloudsystemuser</code>.</p>
+</li>
+<li>
+<p>The &ldquo;First Name&rdquo; and &ldquo;Last Name&rdquo; can be set to whatever you want, for example <code>Next Cloud</code>.</p>
+</li>
+<li>
+<p>Set the password to something secure and note it down.</p>
+</li>
+</ol>
+<h4 id="3-make-the-user-an-admin">3. Make the user an &ldquo;admin&rdquo;</h4>
+<p>The new user needs to be an admin so it can be used to receive information about all users.</p>
+<ol>
+<li>
+<p>Click on the <code>Next Cloudsystemuser</code> user on the &ldquo;Active Users&rdquo; page.</p>
+</li>
+<li>
+<p>Open the &ldquo;User Groups&rdquo; tab.</p>
+</li>
+<li>
+<p>Click on the &ldquo;Add&rdquo; button.</p>
+</li>
+<li>
+<p>Click the checkbox next to &ldquo;admins&rdquo;.</p>
+</li>
+<li>
+<p>In the middle of the dialog press the button pointing to the right &ldquo;&gt;&rdquo;.</p>
+</li>
+<li>
+<p>Finally, press &ldquo;Add&rdquo;.</p>
+</li>
+</ol>
+<h3 id="2-configure-next-cloud-ldap--ad-integration">2. Configure Next Cloud LDAP / AD Integration</h3>
+<h4 id="1-enable--install-the-ldap-user-and-group-backend-app">1. Enable / Install the &ldquo;LDAP user and group backend&rdquo; app</h4>
+<p>The &ldquo;LDAP user and group backend&rdquo; app is used to provide LDAP support for Next Cloud.</p>
+<ol>
+<li>Go to the Next Cloud apps page and enable the &ldquo;LDAP user and group backend&rdquo; app. Optionally, I recommend installing the &ldquo;Write support for LDAP&rdquo; and the &ldquo;LDAP Contacts Backend&rdquo; app.</li>
+</ol>
+<h4 id="2-configure-ldap--ad-connection-settings">2. Configure LDAP / AD connection settings</h4>
+<ol>
+<li>
+<p>Open the &ldquo;Administration Settings&rdquo; page and go to the &ldquo;LDAP / AD integration&rdquo; page.</p>
+</li>
+<li>
+<p>In the &ldquo;Host&rdquo; field enter your Free IPA server&rsquo;s hostname, for example: <code>ipa.minersonline.lan</code>. If your running your Next Cloud in Docker then you may need to use the server&rsquo;s IP address instead.</p>
+</li>
+<li>
+<p>Set the &ldquo;Port&rdquo; field to <code>389</code>.</p>
+</li>
+<li>
+<p>Set the &ldquo;User DN&rdquo; to <code>uid=Next Cloudsystemuser,cn=users,cn=accounts,dc=minersonline,dc=lan</code></p>
+<blockquote>
+<p>[!NOTE]
+The <code>Next Cloudsystemuser</code> part is the &ldquo;User Login&rdquo; we set earlier.</p>
+<p>The <code>dc=minersonline,dc=lan</code> part depends on your Free IPA realm domain. For example if your domain is <code>office.example.com</code> then you would use <code>dc=office,dc=example,dc=com</code>.</p></blockquote>
+</li>
+<li>
+<p>Set the &ldquo;Password&rdquo; to what you noted down earlier.</p>
+</li>
+<li>
+<p>Then press &ldquo;Save Credentials&rdquo;.</p>
+</li>
+<li>
+<p>Set the &ldquo;One Base DN per line&rdquo; to <code>dc=minersonline,dc=lan</code></p>
+<blockquote>
+<p>[!NOTE]
+Again, The <code>dc=minersonline,dc=lan</code> part depends on your Free IPA realm domain. For example if your domain is <code>office.example.com</code> then you would use <code>dc=office,dc=example,dc=com</code>.</p></blockquote>
+</li>
+<li>
+<p>Finally, press &ldquo;Continue&rdquo;.</p>
+</li>
+</ol>
+<h4 id="3-configure-ldap-groups">3. Configure LDAP Groups</h4>
+<ol>
+<li>
+<p>On the same page click on the &ldquo;Groups&rdquo; tab.</p>
+</li>
+<li>
+<p>Click the &ldquo;Edit LDAP Query&rdquo; link.</p>
+</li>
+<li>
+<p>In the &ldquo;Edit LDAP Query&rdquo; text box type: <code>(|(cn=ipausers))</code>. This filter will add the <code>ipausers</code> group from the Identity &gt; Groups page on the Free IPA interface.</p>
+</li>
+</ol>
+<h4 id="4-configure-ldap-login-attributes">4. Configure LDAP Login Attributes</h4>
+<ol>
+<li>
+<p>On the same page click on the &ldquo;Login Attributes&rdquo; tab.</p>
+</li>
+<li>
+<p>Click the &ldquo;Edit LDAP Query&rdquo; link.</p>
+</li>
+<li>
+<p>In the &ldquo;Edit LDAP Query&rdquo; text box type: <code>(&amp;(objectclass=*)(uid=%uid))</code>.</p>
+</li>
+<li>
+<p>Finally, press &ldquo;Continue&rdquo;.</p>
+</li>
+</ol>
+<h4 id="5-configure-advanced-settings">5. Configure Advanced Settings</h4>
+<ol>
+<li>
+<p>On the same page click on the &ldquo;Advanced&rdquo; tab.</p>
+</li>
+<li>
+<p>Open up the &ldquo;Directory Settings&rdquo; section.</p>
+</li>
+<li>
+<p>Inside the &ldquo;Base User Tree&rdquo; type <code>cn=users,cn=accounts,dc=minersonline,dc=lan</code>.</p>
+<blockquote>
+<p>[!NOTE]
+Again, The <code>dc=minersonline,dc=lan</code> part depends on your Free IPA realm domain. For example if your domain is <code>office.example.com</code> then you would use <code>dc=office,dc=example,dc=com</code>.</p></blockquote>
+</li>
+<li>
+<p>Inside the &ldquo;Base Group Tree&rdquo; type <code>cn=groups,cn=accounts,dc=minersonline,dc=lan</code>.</p>
+<blockquote>
+<p>[!NOTE]
+Again, The <code>dc=minersonline,dc=lan</code> part depends on your Free IPA realm domain. For example if your domain is <code>office.example.com</code> then you would use <code>dc=office,dc=example,dc=com</code>.</p></blockquote>
+</li>
+<li>
+<p>Set the &ldquo;Group-Member association&rdquo; to <code>member</code>.</p>
+</li>
+<li>
+<p>Open up the &ldquo;Special Attributes&rdquo; section.</p>
+</li>
+<li>
+<p>Make sure the &ldquo;Email Field&rdquo; is set to <code>mail</code>.</p>
+</li>
+<li>
+<p>Set the &ldquo;User Home Folder Naming Rule&rdquo; to <code>cn</code>.</p>
+</li>
+<li>
+<p>Finally press &ldquo;Test Configuration&rdquo;. If all settings are good then a &ldquo;Valid configuration, connection established!&rdquo; message should be displayed.</p>
+</li>
+</ol>
+</article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script type="application/javascript" src='https://ajh123.github.io/js/toc.js'></script>
+<link rel="stylesheet" href='https://ajh123.github.io/css/toc.css' />
+
+  
+</div>
+
+  <div class="footer container-xl width-full p-responsive">
+  <div
+    class="position-relative d-flex flex-row-reverse flex-lg-row flex-wrap flex-lg-nowrap flex-justify-center flex-lg-justify-between flex-sm-items-center pt-6 pb-2 mt-6 f6 text-gray border-top border-gray-light ">
+    <a aria-label="Homepage" title="GitHub" class="footer-octicon d-none d-lg-block mr-lg-4" href="https://ajh123.github.io/">
+      <svg height="24" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="24">
+        <path fill-rule="evenodd"
+          d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+        </path>
+      </svg>
+    </a>
+    <ul class="list-style-none d-flex flex-wrap col-12 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
+      
+      <li class="mr-3 mr-lg-0">Theme by <a href='https://github.com/MeiK2333/github-style'>github-style</a></li>
+      
+      <li class="mr-3 mr-lg-0">GitHub and the Invertocat logo are trademarks of <a href="https://github.com/">GitHub, Inc.</a></li>
+    </ul>
+  </div>
+  <div class="d-flex flex-justify-center pb-6">
+    <span class="f6 text-gray-light"></span>
+  </div>
+
+
+</div>
+
+</body>
+
+<script type="application/javascript" src="https://ajh123.github.io/js/github-style.js"></script>
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.min.js"></script>
+<script type="application/javascript" src='https://ajh123.github.io/js/search.js'></script>
+
+
+
+</html>

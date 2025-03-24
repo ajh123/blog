@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Next Cloud on ajh123&#39;s blog</title>
+    <link>https://ajh123.github.io/tags/next-cloud/</link>
+    <description>Recent content in Next Cloud on ajh123&#39;s blog</description>
+    <generator>Hugo</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Mon, 24 Mar 2025 15:21:26 +0000</lastBuildDate>
+    <atom:link href="https://ajh123.github.io/tags/next-cloud/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Configuring Next Cloud to Use Samba</title>
+      <link>https://ajh123.github.io/post/configuring-nextcloud-to-use-samaba/</link>
+      <pubDate>Thu, 21 Dec 2023 14:03:02 +0000</pubDate>
+      <guid>https://ajh123.github.io/post/configuring-nextcloud-to-use-samaba/</guid>
+      <description>&lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;&#xA;&lt;p&gt;The following applications need to be installed on your system&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Next Cloud&lt;/li&gt;&#xA;&lt;li&gt;A Samba domain controller.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;The guide will assume some details:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Hostname: &lt;code&gt;ipa.minersonline.lan&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;Storage path: &lt;code&gt;/DATA/AppData/freeipa-server&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;Server IP: &lt;code&gt;10.0.0.97&lt;/code&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;You may changes these assumptions based on your requirements.&lt;/p&gt;&#xA;&lt;h2 id=&#34;steps&#34;&gt;Steps&lt;/h2&gt;&#xA;&lt;h3 id=&#34;1-step-up-a-system-user-account&#34;&gt;1. Step up a System User Account&lt;/h3&gt;&#xA;&lt;p&gt;The System User Account is a dedicated account that the Next Cloud instance will use to get user information from your Sa,ba server. Call the user &lt;code&gt;Next Cloudsystemuser&lt;/code&gt;, and set a secure password and note it down.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Configuring Next Cloud to Use Free IPA</title>
+      <link>https://ajh123.github.io/post/configuring-nextcloud-to-use-freeipa/</link>
+      <pubDate>Sat, 16 Dec 2023 14:04:26 +0000</pubDate>
+      <guid>https://ajh123.github.io/post/configuring-nextcloud-to-use-freeipa/</guid>
+      <description>&lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;&#xA;&lt;p&gt;The following applications need to be installed on your system&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Next Cloud&lt;/li&gt;&#xA;&lt;li&gt;Free IPA.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;The guide will assume some details:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Free IPA server hostname: &lt;code&gt;ipa.minersonline.lan&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;Free IPA realm domain: &lt;code&gt;mineronline.lan&lt;/code&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;You may changes these assumptions based on your requirements.&lt;/p&gt;&#xA;&lt;h2 id=&#34;steps&#34;&gt;Steps&lt;/h2&gt;&#xA;&lt;h3 id=&#34;1-step-up-a-system-user-account&#34;&gt;1. Step up a System User Account&lt;/h3&gt;&#xA;&lt;p&gt;The System User Account is a dedicated account that the Next Cloud instance will use to get user information from your Free IPA server.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
