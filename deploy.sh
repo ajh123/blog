@@ -1,6 +1,7 @@
 #!/bin/sh
 
-if [ "`git status -s`" ]
+# Skip dirty check if running in GitHub Actions
+if [ -z "$GITHUB_ACTIONS" ] && [ "`git status -s`" ]
 then
     echo "The working directory is dirty. Please commit any pending changes."
     exit 1;
