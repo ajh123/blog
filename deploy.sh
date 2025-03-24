@@ -13,6 +13,16 @@ mkdir public
 git worktree prune
 rm -rf .git/worktrees/public/
 
+echo "Creating gh-pages branch if it doesn't exist"
+if ! git show-ref --verify --quiet refs/remotes/origin/gh-pages; then
+    echo "Creating gh-pages branch"
+    git checkout --orphan gh-pages
+    git reset --hard
+    git commit --allow-empty -m "Initial gh-pages commit"
+    git push origin gh-pages
+    git checkout main
+fi
+
 echo "Checking out gh-pages branch into public"
 git worktree add -B gh-pages public origin/gh-pages
 
@@ -27,7 +37,7 @@ cd public && git add --all && git commit -m "Publishing to gh-pages (publish.sh)
 
 echo "Pushing to github"
 if [ -n "$GITHUB_TOKEN" ]; then
-    git push "https://${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" --all
+    git push "https://${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" gh-pages
 else
-    git push --all
+    git push origin gh-pages
 fi
