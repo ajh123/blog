@@ -26,4 +26,8 @@ echo "Updating gh-pages branch"
 cd public && git add --all && git commit -m "Publishing to gh-pages (publish.sh)"
 
 echo "Pushing to github"
-git push --all
+if [ -n "$GITHUB_TOKEN" ]; then
+    git push "https://${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" --all
+else
+    git push --all
+fi
