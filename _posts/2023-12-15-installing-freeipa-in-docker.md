@@ -15,7 +15,7 @@ The following applications need to be installed on your system:
 The guide will assume some details:
 
 - Hostname: `ipa.minersonline.lan`
-- Storage path: `/DATA/AppData/Free IPA-server`
+- Storage path: `/DATA/AppData/freeipa-server`
 - Server IP: `10.0.0.97`
 
 You may changes these assumptions based on your requirements. The Hostname will determine the domain name of the Free IPA setup, in this example `minersonline.local`. The Storage path will determine where Free IPA will store its data.
@@ -47,7 +47,7 @@ On your router or your DNS server (like PiHole) add the `ipa.minersonline.lan` h
 
 ### 1. Choose a container
 
-Chose a container from the [Free IPA Docker Hub](https://hub.docker.com/r/Free IPA/Free IPA-server/tags). I've chosen `fedora-rawhide`.
+Chose a container from the [Free IPA Docker Hub](https://hub.docker.com/r/Free IPA/freeipa-server/tags). I've chosen `fedora-rawhide`.
 
 ### 2. Perform the installation
 
@@ -56,40 +56,40 @@ The following command will run the image we built in the last step. This will ru
 I recommend answering `no` to `Do you want to configure integrated DNS (BIND)?` because the BIND dns server caused problems during my installation.
 
 ```bash
-docker run --name Free IPA-server -ti \
+docker run --name freeipa-server -ti \
    --read-only \
    -h ipa.minersonline.lan -p 53:53/udp -p 53:53 -p 80:80 -p 443:443 -p 389:389 -p 636:636 -p 88:88 -p 464:464 -p 88:88/udp -p 464:464/udp -p 123:123/udp \
    --sysctl net.ipv6.conf.all.disable_ipv6=0 \
-   -v /sys/fs/cgroup/Free IPA.scope:/sys/fs/cgroup:ro \
-   -v /DATA/AppData/Free IPA-server:/data:Z \
-   --tmpfs /run --tmpfs /tmp Free IPA/Free IPA-server:fedora-rawhide
+   -v /sys/fs/cgroup/freeipa.scope:/sys/fs/cgroup:ro \
+   -v /DATA/AppData/freeipa-server:/data:Z \
+   --tmpfs /run --tmpfs /tmp freeipa/freeipa-server:fedora-rawhide
 ```
 
-> [!NOTE]
 > If you get any errors please see the [errors section](#errors) for your error.
+{: .prompt-tip }
 
 ### 3. Delete the existing container
 
 ```bash
-docker stop Free IPA-server
-docker rm Free IPA-server
+docker stop freeipa-server
+docker rm freeipa-server
 ```
 
 ### 4. Restart the container
 
 ```bash
-docker run -d --name Free IPA-server -ti \
+docker run -d --name freeipa-server -ti \
    --read-only \
    -h ipa.minersonline.lan -p 53:53/udp -p 53:53 -p 80:80 -p 443:443 -p 389:389 -p 636:636 -p 88:88 -p 464:464 -p 88:88/udp -p 464:464/udp -p 123:123/udp \
    --sysctl net.ipv6.conf.all.disable_ipv6=0 \
-   -v /sys/fs/cgroup/Free IPA.scope:/sys/fs/cgroup:ro \
-   -v /DATA/AppData/Free IPA-server:/data:Z \
+   -v /sys/fs/cgroup/freeipa.scope:/sys/fs/cgroup:ro \
+   -v /DATA/AppData/freeipa-server:/data:Z \
    --restart unless-stopped \
-   --tmpfs /run --tmpfs /tmp Free IPA/Free IPA-server:fedora-rawhide
+   --tmpfs /run --tmpfs /tmp freeipa/freeipa-server:fedora-rawhide
 ```
 
-> [!NOTE]
 > If you get any errors please see the [errors section](#errors) for your error.
+{: .prompt-tip }
 
 ## Errors
 
@@ -106,42 +106,42 @@ Exiting PID 1...
 
 #### 1. Delete existing containers / data
 
-`docker rm Free IPA-server` and `rm -rf /DATA/AppData/Free IPA-server`
+`docker rm freeipa-server` and `rm -rf /DATA/AppData/freeipa-server`
 
 #### 2. Perform the installation again
 
 ```bash
-docker run --name Free IPA-server -ti \
+docker run --name freeipa-server -ti \
    --read-only \
    -h ipa.minersonline.lan -p 53:53/udp -p 53:53 -p 80:80 -p 443:443 -p 389:389 -p 636:636 -p 88:88 -p 464:464 -p 88:88/udp -p 464:464/udp -p 123:123/udp \
    --sysctl net.ipv6.conf.all.disable_ipv6=0 \
    --cgroupns host \
    --security-opt seccomp=unconfined \
-   -v /sys/fs/cgroup/Free IPA.scope:/sys/fs/cgroup:rw \
-   -v /DATA/AppData/Free IPA-server:/data:Z \
+   -v /sys/fs/cgroup/freeipa.scope:/sys/fs/cgroup:rw \
+   -v /DATA/AppData/freeipa-server:/data:Z \
    --privileged \
-   --tmpfs /run --tmpfs /tmp Free IPA/Free IPA-server:fedora-rawhide --no-ntp
+   --tmpfs /run --tmpfs /tmp freeipa/freeipa-server:fedora-rawhide --no-ntp
 ```
 
 #### 3. Delete the new container
 
 ```bash
-docker stop Free IPA-server
-docker rm Free IPA-server
+docker stop freeipa-server
+docker rm freeipa-server
 ```
 
 #### 4. Restart the container again
 
 ```bash
-docker run -d --name Free IPA-server -ti \
+docker run -d --name freeipa-server -ti \
    --read-only \
    -h ipa.minersonline.lan -p 53:53/udp -p 53:53 -p 80:80 -p 443:443 -p 389:389 -p 636:636 -p 88:88 -p 464:464 -p 88:88/udp -p 464:464/udp -p 123:123/udp \
    --sysctl net.ipv6.conf.all.disable_ipv6=0 \
    --cgroupns host \
    --security-opt seccomp=unconfined \
-   -v /sys/fs/cgroup/Free IPA.scope:/sys/fs/cgroup:rw \
-   -v /DATA/AppData/Free IPA-server:/data:Z \
+   -v /sys/fs/cgroup/freeipa.scope:/sys/fs/cgroup:rw \
+   -v /DATA/AppData/freeipa-server:/data:Z \
    --restart unless-stopped \
    --privileged \
-   --tmpfs /run --tmpfs /tmp Free IPA/Free IPA-server:fedora-rawhide --no-ntp
+   --tmpfs /run --tmpfs /tmp freeipa/freeipa-server:fedora-rawhide --no-ntp
 ```

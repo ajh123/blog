@@ -35,7 +35,7 @@ If not logged in, enter your admin account details. By default, the user name is
 
 1. On the "Users" page click the "Add" button.
 
-2. Set the "User login" to something explanatory, for example: `Next Cloudsystemuser`.
+2. Set the "User login" to something explanatory, for example: `NextCloudsystemuser`.
 
 3. The "First Name" and "Last Name" can be set to whatever you want, for example `Next Cloud`.
 
@@ -45,7 +45,7 @@ If not logged in, enter your admin account details. By default, the user name is
 
 The new user needs to be an admin so it can be used to receive information about all users.
 
-1. Click on the `Next Cloudsystemuser` user on the "Active Users" page.
+1. Click on the `NextCloudsystemuser` user on the "Active Users" page.
 
 2. Open the "User Groups" tab.
 
@@ -73,12 +73,12 @@ The "LDAP user and group backend" app is used to provide LDAP support for Next C
 
 3. Set the "Port" field to `389`.
 
-4. Set the "User DN" to `uid=Next Cloudsystemuser,cn=users,cn=accounts,dc=minersonline,dc=lan`
+4. Set the "User DN" to `uid=NextCloudsystemuser,cn=users,cn=accounts,dc=minersonline,dc=lan`
 
-   > [!NOTE]
-   > The `Next Cloudsystemuser` part is the "User Login" we set earlier.
+   > The `NextCloudsystemuser` part is the "User Login" we set earlier.
    >
    > The `dc=minersonline,dc=lan` part depends on your Free IPA realm domain. For example if your domain is `office.example.com` then you would use `dc=office,dc=example,dc=com`.
+   {: .prompt-tip }
 
 5. Set the "Password" to what you noted down earlier.
 
@@ -86,8 +86,8 @@ The "LDAP user and group backend" app is used to provide LDAP support for Next C
 
 7. Set the "One Base DN per line" to `dc=minersonline,dc=lan`
 
-   > [!NOTE]
    > Again, The `dc=minersonline,dc=lan` part depends on your Free IPA realm domain. For example if your domain is `office.example.com` then you would use `dc=office,dc=example,dc=com`.
+   {: .prompt-tip }
 
 8. Finally, press "Continue".
 
@@ -117,13 +117,13 @@ The "LDAP user and group backend" app is used to provide LDAP support for Next C
 
 3. Inside the "Base User Tree" type `cn=users,cn=accounts,dc=minersonline,dc=lan`.
 
-   > [!NOTE]
    > Again, The `dc=minersonline,dc=lan` part depends on your Free IPA realm domain. For example if your domain is `office.example.com` then you would use `dc=office,dc=example,dc=com`.
+   {: .prompt-tip }
 
 4. Inside the "Base Group Tree" type `cn=groups,cn=accounts,dc=minersonline,dc=lan`.
 
-   > [!NOTE]
    > Again, The `dc=minersonline,dc=lan` part depends on your Free IPA realm domain. For example if your domain is `office.example.com` then you would use `dc=office,dc=example,dc=com`.
+   {: .prompt-tip }
 
 5. Set the "Group-Member association" to `member`.
 

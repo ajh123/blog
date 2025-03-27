@@ -24,7 +24,7 @@ You may changes these assumptions based on your requirements.
 
 ### 1. Step up a System User Account
 
-The System User Account is a dedicated account that the Next Cloud instance will use to get user information from your Sa,ba server. Call the user `Next Cloudsystemuser`, and set a secure password and note it down.
+The System User Account is a dedicated account that the Next Cloud instance will use to get user information from your Sa,ba server. Call the user `NextCloudsystemuser`, and set a secure password and note it down.
 
 If you have Windows clients connected to the domain then you can use the "Active Directory Users and Computers" program to add the user.
 
@@ -38,7 +38,7 @@ This depends on how you have installed Next Cloud.
 For me:
 
 ```bash
-sudo docker exec -it Next Cloud bash
+sudo docker exec -it nextcloud bash
 ```
 
 #### 2. Edit LDAP configuration
@@ -55,7 +55,7 @@ You may need to restart your Next Cloud server.
 For me:
 
 ```bash
-sudo docker restart Next Cloud
+sudo docker restart nextcloud
 ```
 
 ### 3. Configure Next Cloud LDAP / AD Integration
@@ -74,12 +74,12 @@ The "LDAP user and group backend" app is used to provide LDAP support for Next C
 
 3. Set the "Port" field to `636`.
 
-4. Set the "User DN" to `cn=Next Cloudsystemuser,cn=users,dc=minersonline,dc=lan`
+4. Set the "User DN" to `cn=NextCloudsystemuser,cn=users,dc=minersonline,dc=lan`
 
-   > [!NOTE]
-   > The `Next Cloudsystemuser` part is the user account we set earlier.
+   > The `NextCloudsystemuser` part is the user account we set earlier.
    >
    > The `dc=minersonline,dc=lan` part depends on your Samba realm domain. For example if your domain is `office.example.com` then you would use `dc=office,dc=example,dc=com`.
+   {: .prompt-tip }
 
 5. Set the "Password" to what you noted down earlier.
 
@@ -87,8 +87,8 @@ The "LDAP user and group backend" app is used to provide LDAP support for Next C
 
 7. Set the "One Base DN per line" to `dc=minersonline,dc=lan`
 
-   > [!NOTE]
    > Again, The `dc=minersonline,dc=lan` part depends on your Samba realm domain. For example if your domain is `office.example.com` then you would use `dc=office,dc=example,dc=com`.
+   {: .prompt-tip }
 
 8. Finally, press "Continue".
 
@@ -120,13 +120,13 @@ The "LDAP user and group backend" app is used to provide LDAP support for Next C
 
 4. Inside the "Base User Tree" type `cn=users,dc=minersonline,dc=lan`.
 
-   > [!NOTE]
    > Again, The `dc=minersonline,dc=lan` part depends on your Samba realm domain. For example if your domain is `office.example.com` then you would use `dc=office,dc=example,dc=com`.
+   {: .prompt-tip }
 
 5. Inside the "Base Group Tree" type `cn=users,dc=minersonline,dc=lan`
 
-   > [!NOTE]
    > Again, The `dc=minersonline,dc=lan` part depends on your Samba realm domain. For example if your domain is `office.example.com` then you would use `dc=office,dc=example,dc=com`.
+   {: .prompt-tip }
 
 6. Set the "Group-Member association" to `member (AD)`.
 
