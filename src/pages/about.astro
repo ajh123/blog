@@ -1,7 +1,8 @@
 ---
-import Footer from '../components/Footer.astro';
 import Navigation from '../components/Navigation.astro';
 import '../style.css';
+import UnderConstruction from '../components/UnderConstruction.astro';
+import Footer from '../components/Footer.astro';
 ---
 
 <html lang="en">
@@ -10,15 +11,14 @@ import '../style.css';
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Home</title>
+		<title>About</title>
 	</head>
 	<body>
 		<div class="main">
 			<Navigation/>
 		
 			<div class="content">
-				<h1>Astro</h1>
-				<p>Testing!</p>
+				<UnderConstruction/>
 			</div>
 		</div>
 

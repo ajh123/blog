@@ -1,0 +1,39 @@
+---
+export interface Props {
+  message?: string;
+}
+
+const { message = "🚧 This section is under construction. Please check back soon!" } = Astro.props;
+---
+
+<style>
+	.under-construction {
+		display: flex;
+		align-items: center;
+		gap: 0.75em;
+		background-color: #fff8dc;
+		border: 2px solid #000;
+		border-radius: 4px;
+		padding: 1rem;
+		font-family: "Courier New", Courier, monospace;
+		font-size: 1rem;
+		color: #111;
+		max-width: 100%;
+		box-shadow: 2px 2px 0 #000;
+	}
+
+	.emoji {
+		font-size: 1.5rem;
+	}
+
+	.under-construction-message {
+		max-width: 500px;
+	}
+</style>
+
+<div class="under-construction" role="note" aria-label="Under construction notice">
+	<span class="emoji" aria-hidden="true">🚧</span>
+	<div class="under-construction-message">
+		{message}
+	</div>
+</div>

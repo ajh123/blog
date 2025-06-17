@@ -1,0 +1,60 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    line-height: 1.6;
+    font-size: 18px;
+    color: #444;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column; /* Add this to stack elements vertically */
+    min-height: 100vh; /* Ensure body takes full viewport height */
+}
+
+
+/* top‑level flex wrapper that holds nav + content */
+.main {
+  display: flex;
+  flex: 1;            /* fill all space between header (if any) and footer */
+}
+
+/* content panel (the old “.main”) */
+.content {
+  margin: 40px auto;
+  max-width: 900px;
+  padding: 0 10px;
+  flex: 1;            /* take remaining width beside the sidebar */
+}
+
+.content  :where(img, video, canvas, iframe) {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+h2,
+h2,
+h3 {
+    line-height: 1.2;
+}
+
+.counter {
+    background: #000000;
+    border: 2px inset #c0c0c0;
+    padding: 8px;
+    margin: 15px 0;
+    text-align: center;
+}
+
+.counter-display {
+    background: #000000;
+    color: #00ff00;
+    font-family: "Courier New", monospace;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 5px;
+    border: 1px solid #008000;
+}

@@ -1,0 +1,53 @@
+---
+import { getCollection } from 'astro:content';
+import Navigation from '../../components/Navigation.astro';
+import '../../style.css';
+import Footer from '../../components/Footer.astro';
+
+const posts = (await getCollection('blog')).sort((a, b) => {
+	return new Date(b.data.date).getTime() - new Date(a.data.date).getTime();
+});
+
+const fixedPosts = posts.map((post) => {
+	return {
+		...post,
+		id: "/posts/"+post.id.replace(/^\d{4}-\d{2}-\d{2}-/, ""),
+	};
+});
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Posts</title>
+	</head>
+	<body>
+		<div class="main">
+			<Navigation/>
+		
+			<div class="content">
+				<h1>📚 Posts</h1>
+				<p>Here are some of my recent posts:</p>
+				<ul>
+					{fixedPosts.map((post) => (
+						<li class="link-item">
+							<a
+								href={post.id}
+								rel="noopener noreferrer"
+							>
+								{post.data.title}
+							</a>
+							{post.data.description && <p class="description">{post.data.description}</p>}
+							<p class="description">{post.data.date}</p>
+						</li>
+					))}
+				</ul>
+			</div>
+		</div>
+
+		<Footer/>
+	</body>
+</html>
