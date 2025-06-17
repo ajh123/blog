@@ -1,3 +1,16 @@
+---
+import { Redis } from '@upstash/redis';
+
+const redis = new Redis({
+  url: import.meta.env.KV_REST_API_URL,
+  token: import.meta.env.KV_REST_API_TOKEN,
+})
+
+const visitorCount = (await redis.get('visitorCount') as number) || 0;
+
+await redis.set('visitorCount', visitorCount + 1);
+---
+
 <style>
 .sidebar {
     width: 200px;
@@ -54,6 +67,6 @@
     
     <div class="counter">
         <p>Visitor Counter:</p>
-        <div class="counter-display">000000</div>
+        <div class="counter-display">{visitorCount}</div>
     </div>
 </div>
