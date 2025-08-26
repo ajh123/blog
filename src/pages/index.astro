@@ -1,8 +1,6 @@
 ---
-import Footer from '../components/Footer.astro';
-import Navigation from '../components/Navigation.astro';
+import PageLayout from '../layouts/PageLayout.astro';
 import { getCollection } from 'astro:content';
-import '../style.css';
 
 // Get recent posts for the home page
 const posts = (await getCollection('blog')).sort((a, b) => {
@@ -17,75 +15,57 @@ const recentPosts = posts.map((post) => {
 });
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Home - Sam's Blog</title>
-		<meta name="description" content="Welcome to my blog where I write about [your topics]" />
-	</head>
-	<body>
-		<div class="main">
-			<Navigation/>
-		
-			<div class="content">
-				<section class="hero">
-					<h1>👋 Hello, I'm Samuel Hulme</h1>
-					<p class="intro">
-						Welcome to my blog! I'm a computer networking and business applications enthusiast.
-						Here I share insights, tutorials, and thoughts on networking technologies, IT infrastructure,
-						and how businesses can leverage software to succeed.
-					</p>
-				</section>
+<PageLayout title="Home - Sam's Blog">
+	<section class="hero">
+		<h1>👋 Hello, I'm Samuel Hulme</h1>
+		<p class="intro">
+			Welcome to my blog! I'm a computer networking and business applications enthusiast.
+			Here I share insights, tutorials, and thoughts on networking technologies, IT infrastructure,
+			and how businesses can leverage software to succeed.
+		</p>
+	</section>
 
-				<section class="recent-posts">
-					<h2>📝 Recent Posts</h2>
-					{recentPosts.length > 0 ? (
-						<ul>
-							{recentPosts.map((post) => (
-								<li class="link-item">
-									<a href={`/posts/${post.slug}`}>
-										{post.data.title}
-									</a>
-									{post.data.description && <p class="description">{post.data.description}</p>}
-									<p class="description">{post.data.date}</p>
-								</li>
-							))}
-						</ul>
-					) : (
-						<p>No posts yet. Check back soon!</p>
-					)}
-					<a href="/posts" class="view-all">View all posts →</a>
-				</section>
+	<section class="recent-posts">
+		<h2>📝 Recent Posts</h2>
+		{recentPosts.length > 0 ? (
+			<ul>
+				{recentPosts.map((post) => (
+					<li class="link-item">
+						<a href={`/posts/${post.slug}`}>
+							{post.data.title}
+						</a>
+						{post.data.description && <p class="description">{post.data.description}</p>}
+						<p class="description">{post.data.date}</p>
+					</li>
+				))}
+			</ul>
+		) : (
+			<p>No posts yet. Check back soon!</p>
+		)}
+		<a href="/posts" class="view-all">View all posts →</a>
+	</section>
 
-				<section class="quick-links">
-					<h2>🔍 Explore</h2>
-					<ul class="link-grid">
-						<li>
-							<a href="/about" class="quick-link">
-								<strong>About Me</strong>
-							</a>
-							<p>Learn more about my background</p>
-						</li>
-						<li>
-							<a href="/links" class="quick-link">
-								<strong>Links</strong>
-							</a>
-							<p>Find me around the web</p>
-						</li>
-						<li>
-							<a href="/guestbook" class="quick-link">
-								<strong>Guestbook</strong>
-							</a>
-							<p>Leave a message</p>
-						</li>
-					</ul>
-				</section>
-			</div>
-		</div>
-
-		<Footer/>
-	</body>
-</html>
+	<section class="quick-links">
+		<h2>🔍 Explore</h2>
+		<ul class="link-grid">
+			<li>
+				<a href="/about" class="quick-link">
+					<strong>About Me</strong>
+				</a>
+				<p>Learn more about my background</p>
+			</li>
+			<li>
+				<a href="/links" class="quick-link">
+					<strong>Links</strong>
+				</a>
+				<p>Find me around the web</p>
+			</li>
+			<li>
+				<a href="/guestbook" class="quick-link">
+					<strong>Guestbook</strong>
+				</a>
+				<p>Leave a message</p>
+			</li>
+		</ul>
+	</section>
+</PageLayout>

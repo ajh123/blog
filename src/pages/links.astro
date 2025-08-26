@@ -1,42 +1,22 @@
 ---
-import Navigation from '../components/Navigation.astro';
+import PageLayout from '../layouts/PageLayout.astro';
 import { links } from '../../content/links';
-import '../style.css';
-import Footer from '../components/Footer.astro';
 ---
-
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Links - Sam's Blog</title>
-	</head>
-	<body>
-		<div class="main">
-			<Navigation/>
-		
-			<div class="content">
-				<h1>🔗 Links</h1>
-				<p>Here are links to my online accounts and profiles:</p>
-				<ul>
-					{Object.values(links).map((link) => (
-						<li class="link-item">
-							<a
-								href={link.url}
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								{link.name}
-							</a>
-							{link.description && <p class="description">{link.description}</p>}
-						</li>
-					))}
-				</ul>
-			</div>
-		</div>
-
-		<Footer/>
-	</body>
-</html>
+<PageLayout title="Links - Sam's Blog">
+	<h1>🔗 Links</h1>
+	<p>Here are links to my online accounts and profiles:</p>
+	<ul>
+		{Object.values(links).map((link) => (
+		<li class="link-item">
+			<a
+				href={link.url}
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				{link.name}
+			</a>
+			{link.description && <p class="description">{link.description}</p>}
+		</li>
+		))}
+	</ul>
+</PageLayout>

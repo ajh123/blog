@@ -1,15 +1,13 @@
 ---
-import Footer from '../../components/Footer.astro';
-import Navigation from '../../components/Navigation.astro';
-import '../../style.css';
 import { getCollection, render } from 'astro:content';
+import PageLayout from '../../layouts/PageLayout.astro';
 
 const { slug } = Astro.params;
 const posts = await getCollection('blog');
 
 const post = posts.find(p => {
 	const postSlug = p.id.replace(/^\d{4}-\d{2}-\d{2}-/, '');
-	return postSlug === slug
+	return postSlug === slug;
 });
 
 if (!post) {
@@ -19,25 +17,8 @@ if (!post) {
 const { Content } = await render(post);
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{post.data.title} - Sam's Blog</title>
-	</head>
-	<body>
-		<div class="main">
-			<Navigation/>
-		
-			<div class="content">
-				<h1>{post.data.title}</h1>
-				<hr/>
-				<Content />
-			</div>
-		</div>
-
-		<Footer/>
-	</body>
-</html>
+<PageLayout title={post.data.title} description={post.data.description}>
+	<h1>{post.data.title}</h1>
+	<hr/>
+	<Content />
+</PageLayout>

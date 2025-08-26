@@ -1,27 +1,7 @@
 ---
-import Navigation from '../components/Navigation.astro';
-import '../style.css';
+import PageLayout from '../layouts/PageLayout.astro';
 import UnderConstruction from '../components/UnderConstruction.astro';
-import Footer from '../components/Footer.astro';
 ---
-
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>About - Sam's Blog</title>
-	</head>
-	<body>
-		<div class="main">
-			<Navigation/>
-		
-			<div class="content">
-				<UnderConstruction/>
-			</div>
-		</div>
-
-		<Footer/>
-	</body>
-</html>
+<PageLayout title="About - Sam's Blog">
+	<UnderConstruction />
+</PageLayout>
