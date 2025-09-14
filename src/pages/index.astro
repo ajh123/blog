@@ -1,72 +1,76 @@
 ---
-import PageLayout from '../layouts/PageLayout.astro';
-import { getCollection } from 'astro:content';
+import Layout from '~/layouts/Layout.astro'
+import { getSortedPosts } from '~/utils'
+import { getCollection, render } from 'astro:content'
+import PostPreview from '~/components/PostPreview.astro'
+import Pagination from '~/components/Pagination.astro'
+import BlockHeader from '~/components/BlockHeader.astro'
+import HomeBanner from '~/components/HomeBanner.astro'
+import siteConfig from '~/site.config'
+import TagsSection from '~/components/TagsSection.astro'
+import SeriesSection from '~/components/SeriesSection.astro'
 
-// Get recent posts for the home page
-const posts = (await getCollection('blog')).sort((a, b) => {
-	return new Date(b.data.date).getTime() - new Date(a.data.date).getTime();
-}).slice(0, 3); // Show only the 3 most recent posts
+const home = await getCollection('home')
+let HomeContent
+let homeAvatarImage
+let homeGithubCalendar
+if (home.length > 0) {
+  const homeEntry = home[0]
+  const { Content } = await render(homeEntry)
+  HomeContent = Content
+  homeAvatarImage = homeEntry.data.avatarImage
+  homeGithubCalendar = homeEntry.data.githubCalendar
+}
+const sortedPosts = await getSortedPosts()
+const postsHaveTags = sortedPosts.some(
+  (post) => post.data.tags && post.data.tags.length > 0,
+)
 
-const recentPosts = posts.map((post) => {
-	return {
-		...post,
-		slug: post.id.replace(/^\d{4}-\d{2}-\d{2}-/, ""),
-	};
-});
-
-
+const postsHaveSeries = sortedPosts.some((post) => post.data.series)
 ---
-<PageLayout title="Home - Sam's Blog">
-	<section class="hero">
-		<h1>👋 Hello, I'm Samuel Hulme</h1>
-		<p class="intro">
-			Welcome to my blog! I'm a computer networking and business applications enthusiast.
-			Here I share insights, tutorials, and thoughts on networking technologies, IT infrastructure,
-			and how businesses can leverage software to succeed.
-		</p>
-	</section>
 
-	<section class="recent-posts">
-		<h2>📝 Recent Posts</h2>
-		{recentPosts.length > 0 ? (
-			<ul>
-				{recentPosts.map((post) => (
-					<li class="link-item">
-						<a href={`/posts/${post.slug}`}>
-							{post.data.title}
-						</a>
-						{post.data.description && <p class="description">{post.data.description}</p>}
-						<p class="description">{post.data.date}</p>
-					</li>
-				))}
-			</ul>
-		) : (
-			<p>No posts yet. Check back soon!</p>
-		)}
-		<a href="/posts" class="view-all">View all posts →</a>
-	</section>
+<Layout>
+  {
+    HomeContent && (
+      <HomeBanner avatarImage={homeAvatarImage} githubCalendar={homeGithubCalendar}>
+        <HomeContent />
+      </HomeBanner>
+    )
+  }
+  {
+    postsHaveSeries && (
+      <section>
+        <BlockHeader>Series</BlockHeader>
+        <SeriesSection posts={sortedPosts} />
+      </section>
+    )
+  }
+  {
+    postsHaveTags && (
+      <section>
+        <BlockHeader>Tags</BlockHeader>
+        <TagsSection posts={sortedPosts} />
+      </section>
+    )
+  }
+  {
+    sortedPosts.length > 0 && (
+      <section>
+        <BlockHeader>Latest Posts</BlockHeader>
+        {sortedPosts
+          .reverse()
+          .slice(0, Math.floor(siteConfig.pageSize / 2))
+          .map((post) => (
+            <PostPreview post={post} />
+          ))}
+        <Pagination nextLink="/posts" nextText="Archive" />
+      </section>
+    )
+  }
+</Layout>
 
-	<section class="quick-links">
-		<h2>🔍 Explore</h2>
-		<ul class="link-grid">
-			<li>
-				<a href="/about" class="quick-link">
-					<strong>About Me</strong>
-				</a>
-				<p>Learn more about my background</p>
-			</li>
-			<li>
-				<a href="/links" class="quick-link">
-					<strong>Links</strong>
-				</a>
-				<p>Find me around the web</p>
-			</li>
-			<li>
-				<a href="/guestbook" class="quick-link">
-					<strong>Guestbook</strong>
-				</a>
-				<p>Leave a message</p>
-			</li>
-		</ul>
-	</section>
-</PageLayout>
+<style is:global>
+  a.heading-anchor {
+    display: none !important;
+  }
+</style>
