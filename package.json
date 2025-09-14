@@ -10,9 +10,11 @@
   },
   "dependencies": {
     "@astrojs/preact": "^4.1.0",
-    "@astrojs/vercel": "^8.1.5",
+    "@astrojs/vercel": "^8.0.4",
     "@upstash/redis": "^1.35.0",
     "astro": "^5.9.4",
+    "posthog-js": "^1.260.3",
+    "posthog-node": "^5.8.0",
     "preact": "^10.26.9"
   }
 }
