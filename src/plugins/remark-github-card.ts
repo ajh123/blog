@@ -35,7 +35,8 @@ export const remarkGithubCard: Plugin<[], Root> = () => async (tree) => {
       // We only want a leaf directive named DIRECTIVE_NAME
       if (node.type !== 'leafDirective' || node.name !== DIRECTIVE_NAME) return node
 
-      let repoName = node.attributes?.repo ?? node.attributes?.user ?? null
+      let repoName = node.attributes?.repo ?? node.attributes?.user ?? node.attributes?.org ?? null
+      let providedDescription = node.attributes?.description ?? null
       if (!repoName) return node // Leave the directive as-is if no repo is provided
 
       repoName = repoName.endsWith('/') ? repoName.slice(0, -1) : repoName // Remove trailing slash
@@ -57,9 +58,10 @@ export const remarkGithubCard: Plugin<[], Root> = () => async (tree) => {
           throw new Error(`Fetching GitHub repo data for "${repoName}" failed`)
         }
         const data = await res.json()
-        const description = data.description
+        const sourceDescription = data.description
           ? data.description.replace(/:[a-zA-Z0-9_]+:/g, '')
           : undefined
+        const description = providedDescription ?? sourceDescription
         const backgroundImage = data.owner?.avatar_url
         const language = data.language
         const forks = Intl.NumberFormat(undefined, {
@@ -142,6 +144,13 @@ export const remarkGithubCard: Plugin<[], Root> = () => async (tree) => {
             ]),
             h('span', { class: 'gh-icon' }),
           ]),
+          providedDescription &&
+            h('div', { class: 'gh-description' }, [
+              {
+                type: 'text',
+                value: providedDescription,
+              },
+            ]),
           h('div', { class: 'gh-chips' }, [
             h('span', { class: 'gh-followers' }, [{ type: 'text', value: followers }]),
             h('span', { class: 'gh-repositories' }, [

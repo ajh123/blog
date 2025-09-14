@@ -14,8 +14,7 @@ In order to know who we are controlling we need the know the IP range. One way t
 
 To do this, open the Network app and navigate to **Client Devices**. On this page you will find a list of all the clients and their IP address. Clients that are connected with UniFi Teleport will have the connection type of "VPN". In Figure 1 you can see I have two devices one with the IP "`192.168.2.3`" and "`192.168.2.2`", so, the subnet for this Teleport instance would be "`192.168.2.0/24`".
 
-![](./Screenshot_2024-10-09_171911_-_Copy.png)
-**Figure 1**
+![](./Screenshot_2024-10-09_171911_-_Copy.png 'Figure 1. Screenshot of the client devices page showing two devices connected with UniFi Teleport.')
 
 ## Step 2. Create an IP group with the Teleport subnet
 
@@ -29,8 +28,7 @@ Then fill out options with the following options:
 
 Then, press **Add** (to the right of the Address), and **Add** at the bottom of the page.
 
-![](./Screenshot_2024-10-09_173413.png)
-**Figure 2**
+![](./Screenshot_2024-10-09_173413.png 'Figure 2. Screenshot of the IP Groups page showing the empty form to create a new IP group for Teleport users.')
 
 ## Step 3. Block Teleport from all VLANs
 
@@ -40,8 +38,7 @@ To do this, open the Network app and navigate to **Settings** > **Security** > *
 
 Then fill out the form just like I have in Figure 3.
  
-![](./Screenshot_2024-10-09_174411.png)
-**Figure 3**
+![](./Screenshot_2024-10-09_174411.png 'Figure 3. Screenshot of the firewall rule creation form showing the options to block Teleport users from accessing the LAN.')
 
 You can change the name to be whatever you want, and use the same Address Group you made earlier.
 
@@ -49,15 +46,13 @@ You can change the name to be whatever you want, and use the same Address Group 
 
 To create an allowlist, create another IP group like we did Step 2, but instead of having the Teleport subnet, you should have all the IPs or subnets you want Teleport to have. For an example you can look at Figure 4.
 
-![](./Screenshot_2024-10-09_184602.png)
-**Figure 4**
+![](./Screenshot_2024-10-09_184602.png 'Figure 4. Screenshot of the IP Groups page showing an IP group named "Teleport Allowlist" with two devices added to it.')
 
 ### Step 4.2. Create a firewall rule for the allowlist.
 
 On the same page where we made the "Block Teleport users from LAN" rule, we should make another rule, by using a similar process like in Step 3. Then fill out the form like seen in Figure 5.
 
-![](./Screenshot_2024-10-09_185409.png)
-**Figure 5**
+![](./Screenshot_2024-10-09_185409.png 'Figure 5. Screenshot of the firewall rule creation form showing the options to allow Teleport users to access only the IPs in the "Teleport Allowlist" IP group.')
 
 You may call the rule what ever you want, and you must make sure to use the Address Groups we made earlier.
 
@@ -67,5 +62,4 @@ All firewall rules are applied from the top to bottom, so if you have a block ru
 So we must make sure the allowlist rule is above our blocking rule.
 To do this, you can grab the 6 dots icon next to the allow rule and move it above the block rule. If done successfully, it will appear like seen in Figure 6.
 
-![](./Screenshot_2024-10-09_185848.png)
-**Figure 6**
+![](./Screenshot_2024-10-09_185848.png 'Figure 6. Screenshot of the firewall rules list showing the "Allow Teleport users to access defined" rule above the "Block Teleport users from LAN" rule.')

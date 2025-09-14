@@ -4,6 +4,7 @@ draft: false
 title: 'Using UniFi Talk with a Kamailio SIP Trunk'
 description: 'A guide to setting up a Kamailio SIP trunk for use with UniFi Talk, enabling a non-PSTN environment for testing and experimentation.'
 tags: ['unifi-talk', 'kamailio', 'sip', 'voip', 'docker']
+series: 'Simulating the PSTN'
 ---
 
 In recent days, I’ve been experimenting with UniFi Talk and wanted a SIP trunk that’s not part of the PSTN - something I could *play with without limitations*.
