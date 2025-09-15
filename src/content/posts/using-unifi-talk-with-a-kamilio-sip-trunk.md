@@ -4,7 +4,7 @@ draft: false
 title: 'Using UniFi Talk with a Kamailio SIP Trunk'
 description: 'A guide to setting up a Kamailio SIP trunk for use with UniFi Talk, enabling a non-PSTN environment for testing and experimentation.'
 tags: ['unifi-talk', 'kamailio', 'sip', 'voip', 'docker']
-series: 'Simulating a telco company'
+series: 'Kamailio Tutorials'
 ---
 
 In recent days, I’ve been experimenting with UniFi Talk and wanted a SIP trunk that’s not part of the PSTN - something I could *play with without limitations*.
@@ -29,9 +29,7 @@ Kamailio can handle all of these roles - it's an open-source SIP server designed
 
 We'll run Kamailio using Docker Compose with a minimal config.
 
-**`docker-compose.yml`:**
-
-```yaml
+```yaml title="docker-compose.yml"
 services:
   kamailio:
     image: ghcr.io/kamailio/kamailio:6.0.1-noble

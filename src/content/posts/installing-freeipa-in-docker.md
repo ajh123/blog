@@ -41,8 +41,9 @@ Press `Control + X` then `Y` to save the file.
 
 On your router or your DNS server (like PiHole) add the `ipa.minersonline.lan` hostname to match the IP of your machine.
 
-> [!NOTE]
-> This step is different for different models of routers or DNS servers, please consult their documentation.
+:::note
+This step is different for different models of routers or DNS servers, please consult their documentation.
+:::
 
 ## Steps
 
@@ -89,8 +90,9 @@ docker run -d --name freeipa-server -ti \
    --tmpfs /run --tmpfs /tmp freeipa/freeipa-server:fedora-rawhide
 ```
 
-> If you get any errors please see the [errors section](#errors) for your error.
-{: .prompt-tip }
+:::tip
+If you get any errors please see the [errors section](#errors) for your error.
+:::
 
 ## Errors
 

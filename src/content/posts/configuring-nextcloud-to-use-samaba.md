@@ -46,7 +46,7 @@ sudo docker exec -it nextcloud bash
 
 Open the file `/etc/ldap/ldap.conf` and add the line to the bottom:
 
-```text
+```text title="/etc/ldap/ldap.conf"
 TLS_REQCERT never
 ```
 
