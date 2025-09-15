@@ -7,6 +7,10 @@ tags: ['minecraft', 'proxy', 'rust']
 series: 'Minecraft for Enterprises'
 ---
 
+:::note
+The article has since been updated with additional calcifications via footnotes. - *September 2025*
+:::
+
 In just 3 hours and 38 minutes, I built [`mc-router`](https://github.com/CloudinatorMC/mc-router) an enterprise-ready Minecraft ingress proxy designed to handle incoming connections and route them to the right backend servers. It ships with native multi-tenant support, HAProxy protocol, UDP forwarding, and even a draft cloud configuration API.
 
 I've been trying to find a good Minecraft proxy for ingress traffic for a while now, but I've come to the conclusion that none were designed for multi-tenancy hosting environments natively - *unless you workaround with your own custom plugins*.
@@ -30,12 +34,17 @@ Existing implemented features:
 1. Routing based on the [Handshake packet](https://minecraft.wiki/w/Java_Edition_protocol/Packets#Handshake) - Allows routing players to different backend servers based on the hostname they use to connect.
 2. HAProxy Protocol v1 support - Allows passing the original client's IP address to the backend game server, which is crucial for logging and player management.
 3. Optional UDP packet routing - Supports routing UDP packets, which is essential for a few Minecraft mods.
-4. A config service API draft - Once completed, this will allow dynamic configuration of the proxy via a RESTful API secured with ed25519 keys.
+4. A config service API draft - Once completed, this will allow dynamic configuration of the proxy via a RESTful API secured with ed25519 keys. [^1]
+
+[^1]: This API has since become a plain JSON over WebSocket service, allowing real-time updates to the proxy configuration [see the code](https://github.com/CloudinatorMC/mc-router/tree/main/src/management_api) for more details.
+
 
 Upcoming features:
-1. TLS tunnelling - Enables secure connections to the backend game servers, enhancing security and privacy.
+1. TLS tunnelling - Enables secure connections to the backend game servers, enhancing security and privacy. [^2]
 2. Full cloud config synchronisation - Allows the proxy to synchronise its configuration with a central cloud service, making it easier to manage multiple proxies.
 ... and a [public roadmap](https://github.com/orgs/CloudinatorMC/projects/1) with more features to come!
+
+[^2]: TLS tunnelling will not be part of the `mc-router` binary itself, instead it will be implemented as a separate sidecar service that works alongside `mc-router`. This design choice allows for greater flexibility and modularity, enabling users to choose their preferred TLS solution without being tied to a specific implementation within the proxy.
 
 ## Building `mc-router` in Under 4 Hours
 
@@ -55,4 +64,4 @@ The real story isn’t just [`mc-router`](https://github.com/CloudinatorMC/mc-ro
 
 In this scenario we can agree with ChatGPT's sentiment, as GPT-5 has proven it can undertake complex software development tasks efficiently. However, human oversight and expertise remain crucial to ensure the quality and reliability of the final product.
 
-The journey isn’t finished, next up is TLS tunnelling and completing the config service API backend, bringing [`mc-router`](https://github.com/CloudinatorMC/mc-router) even closer to its goal of being a truly enterprise-ready ingress for Minecraft.
+The journey isn’t finished, next up is TLS tunnelling [^2] and completing the config service API backend, bringing [`mc-router`](https://github.com/CloudinatorMC/mc-router) even closer to its goal of being a truly enterprise-ready ingress for Minecraft.

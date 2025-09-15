@@ -6,6 +6,10 @@ description: 'A guide on how to restrict UniFi Teleport users to specific VLANs.
 tags: ['unifi', 'authentication']
 ---
 
+:::important
+As of August 2025, Ubiquiti has released version 9.4.19 of the UniFi Network application, which collapses the "Traffic & Firewall Rules" and other rules into a single "Policy Table" interface. You need to navigate to **Settings** >  **Policy Table** and toggle the Firewall type filter to manage your firewall rules. The process of creating rules remains similar, but the interface has been streamlined. - *September 2025*
+:::
+
 In this guide we will learn how to configure which IPs and VLANs users connected via UniFi Teleport can access.
 
 ## Step 1. Identify the IP range that Teleport uses.

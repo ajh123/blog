@@ -56,6 +56,11 @@ export default defineConfig({
       rehypePixelated,
       rehypeKatex,
     ],
+    remarkRehype: {
+      footnoteLabelProperties: {
+        className: [''], // disable class on footnote label to make it visible by default it is set to 'sr-only'
+      }
+    }
   },
   image: {
     responsiveStyles: true,
