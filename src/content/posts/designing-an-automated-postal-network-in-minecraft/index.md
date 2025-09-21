@@ -17,7 +17,7 @@ In computer networking, data is transmitted across networks using a layered appr
 1. **Link Layer** *(Transport method)*: This layer is the physical act of sending and receiving of items. Whether it is through minecart tracks, hoppers, or even Trains from the Create mod it does not matter. This is similar to how network data can travel through Ethernet cables or Wi-Fi in real-world networking. @cite{fortinet2025}
 2. **Internet Layer** *(Postcodes and addresses)*: This layer ensures that items are correctly transferred to the destination by routing between networks. For Minecraft, we will create a system that uses item name addresses ([more on this later](#package-addressing)) to ensure that items are routed correctly.
 3. **Transport Layer** This layer is typically responsible for packet splitting, sequencing and reassembly @cite{fortinet2025}. However in Minecraft this would require automated item renaming to create individual packages, which is not possible. @cite{tweaked2025}
-4. **Application Layer** *(The package contents)*: This is the actual payload the user wants to send, in the real-networking the application data like HTTP, FTP, etc. @cite{fortinet2025} In our case, this is the item itself, such as diamonds, iron ingots, or any other item in Minecraft.
+4. **Application Layer** *(The package contents)*: This is the actual payload the user wants to send. In real-networking thi is the application data like HTTP, FTP, etc. @cite{fortinet2025} In our case, this is the item itself, such as diamonds, iron ingots, or any other item in Minecraft.
 
 ## Package addressing
 
