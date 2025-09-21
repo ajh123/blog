@@ -1,0 +1,35 @@
+[
+  {
+    "id": "fortinet2025",
+    "type": "webpage",
+    "author": [{ "family": "Fortinet", "given": "" }],
+    "accessed": { "date-parts": [[2025, 9, 21]] },
+    "title": "What Is Transmission Control Protocol TCP/IP?",
+    "URL": "https://www.fortinet.com/uk/resources/cyberglossary/tcp-ip"
+  },
+  {
+    "id": "tweaked2025",
+    "type": "webpage",
+    "author": [{ "family": "CC: Tweaked Contributors", "given": "" }],
+    "issued": { "date-parts": [[2025, 8, 31]] },
+    "accessed": { "date-parts": [[2025, 9, 21]] },
+    "title": "inventory",
+    "URL": "https://tweaked.cc/generic_peripheral/inventory.html"
+  },
+  {
+    "id": "fortinet2025a",
+    "type": "webpage",
+    "author": [{ "family": "Fortinet", "given": "" }],
+    "accessed": { "date-parts": [[2025, 9, 21]] },
+    "title": "What Is DNS (Domain Name System)?",
+    "URL": "https://www.fortinet.com/resources/cyberglossary/what-is-dns"
+  },
+  {
+    "id": "cloudflare2025",
+    "type": "webpage",
+    "author": [{ "family": "Cloudflare", "given": "" }],
+    "accessed": { "date-parts": [[2025, 9, 21]] },
+    "title": "What is routing? | IP routing",
+    "URL": "https://www.cloudflare.com/en-gb/learning/network-layer/what-is-routing/"
+  }
+]
