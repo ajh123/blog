@@ -20,6 +20,7 @@ const postsCollection = defineCollection({
         })
         .optional(),
       toc: z.boolean().optional().default(true),
+      references: z.string().optional(),
     }),
 })
 

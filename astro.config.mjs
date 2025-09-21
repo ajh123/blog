@@ -23,6 +23,7 @@ import remarkMath from 'remark-math' /* for latex math support */
 import rehypeKatex from 'rehype-katex' /* again, for latex math support */
 import remarkGemoji from './src/plugins/remark-gemoji' /* for shortcode emoji support */
 import rehypePixelated from './src/plugins/rehype-pixelated' /* Custom plugin to handle pixelated images */
+import remarkCitation from './src/plugins/remark-citation' /* Custom plugin to handle citations */
 
 // https://astro.build/config
 export default defineConfig({
@@ -36,6 +37,7 @@ export default defineConfig({
       remarkDirective,
       remarkGithubCard,
       remarkAdmonitions,
+      remarkCitation,
       [remarkCharacterDialogue, { characters: siteConfig.characters }],
       remarkUnknownDirectives,
       remarkMath,

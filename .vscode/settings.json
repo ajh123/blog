@@ -1,0 +1,8 @@
+{
+  "json.schemas": [
+    {
+      "fileMatch": ["**/references.json"],
+      "url": "https://github.com/citation-style-language/schema/raw/refs/heads/master/schemas/input/csl-data.json"
+    }
+  ]
+}
