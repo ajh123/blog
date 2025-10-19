@@ -7,11 +7,11 @@ tags: ['docker', 'model-runner', 'context-size', 'ai', 'ml']
 
 Docker Model Runner uses a default context size of 4096 tokens, which is insufficient for many modern AI/ML applications that require larger context windows to function effectively.
 
-There are many well-documented solutions, however none are straightforward or reliable, for example there is an [attempt to use `cagent`](https://jgcarmona.com/change-dmr-context-size/) with Docker Model Runner to increase context size, but in my experience the new context size is temporarily applied to the `cagent` process only, and not applied default to the specific model it self.
+There are many well-documented solutions, however none are straightforward or reliable, for example there is an [attempt to use `cagent`](https://jgcarmona.com/change-dmr-context-size/) with Docker Model Runner to increase context size, but in my experience the new context size is temporarily applied to the `cagent` process only, and not applied by default to the specific model itself.
 
 However, the official Docker documentation only mentions how you can set the [context size through compose files](https://docs.docker.com/ai/compose/models-and-compose/#model-configuration-options), but again, that only applies to the model instance in the compose project, not the default model context size globally.
 
-Looking at these options, one might assume that no reliable method exists to change the default context size of Docker Model Runner globally. *But lets dig deeper - there is a solution!*
+Looking at these options, one might assume that no reliable method exists to change the default context size of Docker Model Runner globally. *But let's dig deeper - there is a solution!*
 
 ## Introducing the `docker-model` CLI
 
@@ -53,7 +53,7 @@ docker-model.exe configure smollm3 --context-size 8192
 
 Don't be fooled by the lack of command output - if it is silent then it has worked! You have successfully changed the default context size of the `smollm3` model to 8192 tokens.
 
-The best part, unlike `cagent`, which only initiates temporary sessions, and Compose, which defines per-project settings, `docker-model` talks directly to the Model Runner daemon’s persistent configuration.
+The best part is that, unlike `cagent`, which only initiates temporary sessions, and Compose, which defines per-project settings, `docker-model` talks directly to the Model Runner daemon’s persistent configuration.
 
 ## Conclusion
 
