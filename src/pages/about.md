@@ -13,15 +13,7 @@ I primarily work with web development, focusing on both frontend and backend tec
 
 ## Personal Projects
 
-I maintain several personal projects, including:
-
-::github{org="miners-online" description="An open-source Minecraft minigame network that I founded in 2017 and help manage."}
-::github{org="CloudinatorMC" description="A collection of tools written in Rust for managing Minecraft servers at enterprise scale."}
-::github{org="Samland-Gov" description="A Minecraft political simulation server that I founded in 2017 and runs on Miners Online infrastructure."}
-
-### Archived Projects
-
-::github{org="HistorySurvival" description="My experiments with 3D multiplayer game development in various tools like C++, Java, Rust, Python, and JS."}
+I'm an active contributor to several open-source projects and maintain a few of my own. You can find some of my [notable projects](/projects) on this site.
 
 ## Aliases
 
