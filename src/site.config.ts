@@ -38,7 +38,11 @@ const config: SiteConfig = {
       url: '/about',
     },
     {
-      name: 'Archive',
+      name: 'Projects',
+      url: '/projects',
+    },
+    {
+      name: 'Posts',
       url: '/posts',
     },
     {
@@ -184,6 +188,136 @@ const config: SiteConfig = {
     unicorn: '/unicorn.webp',
     duck: '/duck.webp',
   },
+
+  projects: [
+    {
+      name: "Miners Online",
+      description: "An open-source Minecraft minigame network that I founded in 2017 and help manage.",
+      projects: [
+        {
+          name: "monorepo",
+          description: "The main monorepo containing all Miners Online server code.",
+          url: "https://github.com/miners-online/monorepo"
+        },
+        {
+          name: "website",
+          description: "The website for Miners Online.",
+          url: "https://github.com/miners-online/website",
+          resourceLinks: [
+            {
+              name: "Live Site",
+              url: "https://minersonline.uk"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      name: "CloudinatorMC",
+      description: "A collection of tools written in Rust for managing Minecraft servers at enterprise scale.",
+      projects: [
+        {
+          name: "mc-router",
+          description: "A high-performance Minecraft proxy server written in Rust.",
+          url: "https://github.com/CloudinatorMC/mc-router"
+        },
+        {
+          name: "mc-protocol",
+          description: "A Minecraft protocol library for Rust.",
+          url: "https://github.com/CloudinatorMC/mc-protocol"
+        },
+        {
+          name: "mc-dashboard",
+          description: "A web-based dashboard for managing Minecraft proxies and tunnels.",
+          url: "https://github.com/CloudinatorMC/dashboard"
+        },
+        {
+          name: "cloudinator-legacy",
+          description: "The legacy Cloudinator project containing various Minecraft server management tools.",
+          url: "https://github.com/CloudinatorMC/cloudinator-legacy"
+        }
+      ]
+    },
+    {
+      name: "Samland Gov",
+      description: "A Minecraft political simulation server that I founded in 2017 and runs on Miners Online infrastructure.",
+      projects: [
+        {
+          name: "legislation",
+          description: "A repository containing the laws and legislation for the Republic of Samland.",
+          url: "https://github.com/Samland-Gov/legislation"
+        },
+        {
+          name: "website-v3",
+          description: "The website for the Republic of Samland.",
+          url: "https://github.com/Samland-Gov/website-v3",
+          resourceLinks: [
+            {
+              name: "Live Site",
+              url: "https://samland.minersonline.uk"
+            }
+          ]
+        },
+        {
+          name: "mobile-docker",
+          description: "A Docker Compose project to run an IMS (IP Multimedia Subsystem) core network for mobile communications.",
+          url: "https://github.com/Samland-Gov/mobile-docker"
+        }
+      ]
+    },
+    {
+      name: "Game development experiments",
+      description: "My projects experimenting with game development in various programming languages and tools.",
+      projects: [
+        {
+          name: "History Survival",
+          url: "https://github.com/HistorySurvival"
+        }
+      ]
+    },
+    {
+      name: "Other projects",
+      description: "A collection of various other projects I've worked on.",
+      projects: [
+        {
+          name: "Be Quiet Negotiator",
+          description: "A NeoForge client-side mod to allow the client to join vanilla servers without being kicked for using mods.",
+          url: "https://github.com/ajh123/BeQuietNegotiator",
+          resourceLinks: [
+            {
+              name: "Modrinth",
+              url: "https://modrinth.com/mod/be-quiet-negotiator"
+            },
+          ]
+        },
+        {
+          name: "Blog",
+          description: "The source code for this blog website.",
+          url: "https://github.com/ajh123/blog"
+        },
+        {
+          name: "Net Bits",
+          description: "A Python library for serialising and deserialising binary data structures.",
+          url: "https://github.com/ajh123/netbits",
+          resourceLinks: [
+            {
+              name: "PyPI",
+              url: "https://pypi.org/project/netbits/"
+            },
+            {
+              name: "Documentation",
+              url: "https://netbits.minersonline.uk/en/latest/"
+            }
+          ]
+        },
+        {
+          name: "MetroRail",
+          description: "A WIP Minecraft mod for enhancing Minecart railways in Minecraft.",
+          url: "https://github.com/ajh123/MetroRail"
+        }
+      ]
+    }
+  ]
 }
 
 export default config

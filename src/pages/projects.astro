@@ -1,0 +1,37 @@
+---
+import Layout from '~/layouts/Layout.astro'
+import ProjectCard from '~/components/ProjectCard.astro'
+
+import siteConfig from '~/site.config'
+
+const title = "Project Listing"
+const description = "All projects made by Samuel Hulme"
+const projects = siteConfig.projects
+---
+
+<Layout title={title} description={description}>
+  <div class="max-w-full py-7.5">
+    <h1 class="md:mx-2 mb-3 text-[1.75rem] text-heading1 font-semibold">
+      # {title}
+    </h1>
+    <div class="mb-5 prose">
+      {/* Iterate all project groups */}
+      {projects && projects.map((group) => (
+        <div class="mb-8">
+          <h2 class="text-heading2 font-semibold">{group.name}</h2>
+          {group.description && <p>{group.description}</p>}
+            {group.projects.map((project) => (
+              <ProjectCard
+                name={project.name}
+                description={project.description}
+                url={project.url}
+                showGitHubIcon={project.isOnGitHub}
+                resourceLinks={project.resourceLinks}
+              />
+            ))}
+        </div>
+      ))}
+      <p>More projects can be found on my <a href="https://github.com/ajh123" target="_blank" rel="noreferrer noopener">GitHub profile</a>.</p>
+    </div>
+  </div>
+</Layout>
