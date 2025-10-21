@@ -38,7 +38,11 @@ const config: SiteConfig = {
       url: '/about',
     },
     {
-      name: 'Archive',
+      name: 'My Projects',
+      url: '/projects',
+    },
+    {
+      name: 'Blog',
       url: '/posts',
     },
     {
@@ -184,6 +188,58 @@ const config: SiteConfig = {
     unicorn: '/unicorn.webp',
     duck: '/duck.webp',
   },
+
+  projects: [
+    {
+      name: "Miners Online",
+      description: "An open-source Minecraft minigame network that I founded in 2017 and help manage.",
+      projects: [
+        {
+          name: "monorepo",
+          description: "",
+          url: ""
+        },
+        {
+          name: "website",
+          description: "",
+          url: ""
+        }
+      ]
+    },
+    {
+      name: "CloudinatorMC",
+      description: "A collection of tools written in Rust for managing Minecraft servers at enterprise scale.",
+      projects: [
+        {
+          name: "mcrouter",
+          description: "",
+          url: ""
+        }
+      ]
+    },
+    {
+      name: "Samland Gov",
+      description: "A Minecraft political simulation server that I founded in 2017 and runs on Miners Online infrastructure.",
+      projects: [
+        {
+          name: "website",
+          description: "",
+          url: ""
+        }
+      ]
+    },
+    {
+      name: "Archived Projects",
+      description: "All my projects that I am no longer working on",
+      projects: [
+        {
+          name: "History Survival",
+          description: "My experiments with 3D multiplayer game development in various tools like C++, Java, Rust, Python, and JS.",
+          url: "https://github.com/HistorySurvival"
+        }
+      ]
+    }
+  ]
 }
 
 export default config
