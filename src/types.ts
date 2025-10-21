@@ -166,16 +166,18 @@ export type GiscusConfig = {
   reactionsEnabled: boolean
 }
 
-export interface ProjectLink {
+export interface ProjectConfig {
   name: string;
   url: string;
-  description: string;
+  description?: string;
+  isOnGitHub?: boolean;
+  resourceLinks?: { name: string; url: string }[];
 }
 
 export interface ProjectGroup {
   name: string;
   description: string;
-  projects: ProjectLink[];
+  projects: ProjectConfig[];
 }
 
 export interface SiteConfig {

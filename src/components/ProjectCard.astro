@@ -1,0 +1,49 @@
+---
+interface Props {
+  name: string;
+  description?: string;
+  url: string;
+  showGitHubIcon?: boolean;
+  resourceLinks?: { name: string; url: string }[];
+}
+
+const {
+    name,
+    description,
+    url,
+    showGitHubIcon = true,
+    resourceLinks = [],
+} = Astro.props as Props
+---
+
+<div class="github-card">
+    <div class="gh-title">
+        <a
+            class="gh-text"
+            href={url}
+            rel="noreferrer noopener"
+            target="_blank"
+        >
+            {name}
+        </a>
+        {showGitHubIcon && (
+            <span class="gh-icon"></span>
+        )}
+    </div>
+    {description && (
+        <div class="gh-description">{description}</div>
+    )}
+    {resourceLinks && resourceLinks.length > 0 && (
+        <div class="gh-chips">
+            {resourceLinks.map((link) => (
+                <a
+                    href={link.url}
+                    rel="noreferrer noopener"
+                    target="_blank"
+                >
+                    {link.name}
+                </a>
+            ))}
+        </div>
+    )}
+</div>
