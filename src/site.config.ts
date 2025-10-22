@@ -209,6 +209,11 @@ const config: SiteConfig = {
               url: "https://minersonline.uk"
             }
           ]
+        },
+        {
+          name: "infra",
+          description: "Infrastructure-as-Code for managing Miners Online server infrastructure on Kubernetes.",
+          url: "https://github.com/miners-online/infra"
         }
       ]
     },
