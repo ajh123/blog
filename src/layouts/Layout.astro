@@ -4,6 +4,7 @@ import Header from '~/components/Header.astro'
 import Footer from '~/components/Footer.astro'
 import LightDarkAutoThemeLoader from '~/components/LightDarkAutoThemeLoader.astro'
 import SelectThemeLoader from '~/components/SelectThemeLoader.astro'
+import PostHog from '~/components/posthog.astro'
 import siteConfig from '~/site.config'
 import { pick, resolveThemeColorStyles } from '~/utils'
 import crypto from 'crypto'
@@ -123,6 +124,7 @@ let generatedCss: string = cssLines.join('\n')
   data-theme-hash={themeHash}
 >
   <head>
+    <PostHog />
     <meta charset="UTF-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta name="generator" content={Astro.generator} />
