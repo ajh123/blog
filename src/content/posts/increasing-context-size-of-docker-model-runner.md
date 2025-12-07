@@ -1,6 +1,6 @@
 ---
 published: 2025-10-19
-title: Increasing Context Size of Docker Model Runner - The Right Way
+title: Increasing Context Size of Docker Model Runner The Right Way
 description: "Upgrading Docker Model Runner to support larger context sizes for improved model performance and capabilities, without cagent or compose files!"
 tags: ['docker', 'model-runner', 'context-size', 'ai', 'ml']
 ---
