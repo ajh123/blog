@@ -72,7 +72,7 @@ Currently the Kubernetes deployment is in a prototype state, with game servers u
 
 To manage the Minecraft server instances, I decided to use Shulker, a Kubernetes operator specifically designed for Minecraft.
 
-However, there is a version incompatibly between Shulker and the latest Minestom release which I resolved by submitting a [pull request (PR) to Shulker](https://github.com/jeremylvln/Shulker/pull/1119) - *I have already [contributed to Shulker in the past](https://github.com/jeremylvln/Shulker/issues?q=author%3Aajh123)*.
+However, there is a version incompatibly between Shulker and the latest Minestom release which I resolved by submitting a [pull request (PR) to Shulker](https://github.com/jeremylvln/Shulker/pull/1119) - *I have already [contributed to Shulker in the past](https://github.com/jeremylvln/Shulker/issues?q=author%3Asamuelh2005)*.
 
 Shulker was stuck with an old Minestom version (the `1_21-9219e96f76` snapshot) for a while, that did not support the latest `Auth` API changes in Minestom. I redesigned Shulker's Minestom SDK and choose the last Minestom version (`2025.10.05-1.21.8`) to support Java 21 - as Shulker builds with Java 21 I could not use the actual latest Minestom version (`2025.10.18-1.21.10`) which supports Java 25+ only. **As of writing this post, the PR is still unmerged, which means I am unable to use the Shulker SDK in my games and as a result unable to deploy any games to the cluster.**
 

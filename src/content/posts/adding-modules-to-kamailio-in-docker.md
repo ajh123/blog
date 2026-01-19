@@ -38,7 +38,7 @@ If you're only using Docker Compose then you can skip the `COPY` commands and in
 
 Alpine is a minimal Docker image that is lightweight and secure. It reduces the overall size of the Docker image, making it faster to download and deploy.
 
-Furthermore, Alpine's package manager, `apk`, makes it easy to install additional software packages, including Kamailio and its modules - which I've found using the official Kamailio image can be quite complicated to add extra modules to [see my struggles here](https://github.com/ajh123/homelab/commits/main/?since=2025-06-18&until=2025-06-25).
+Furthermore, Alpine's package manager, `apk`, makes it easy to install additional software packages, including Kamailio and its modules - which I've found using the official Kamailio image can be quite complicated to add extra modules to [see my struggles here](https://github.com/samuelh2005/homelab/commits/main/?since=2025-06-18&until=2025-06-25).
 
 ## Running the Custom Image
 

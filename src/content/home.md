@@ -1,8 +1,8 @@
 ---
 avatarImage:
   src: './avatar.jpg'
-  alt: 'ajh123'
-githubCalendar: 'ajh123'
+  alt: 'samuelh2005'
+githubCalendar: 'samuelh2005'
 ---
 
 # 👋 Hello, I'm Samuel Hulme

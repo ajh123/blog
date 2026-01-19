@@ -47,7 +47,7 @@ const config: SiteConfig = {
     },
     {
       name: 'GitHub',
-      url: 'https://github.com/ajh123/',
+      url: 'https://github.com/samuelh2005/',
       external: true,
     },
   ],
@@ -156,7 +156,7 @@ const config: SiteConfig = {
   },
   // Social links to display in the footer.
   socialLinks: {
-    github: 'https://github.com/ajh123/',
+    github: 'https://github.com/samuelh2005/',
     mastodon: undefined,
     email: undefined,
     linkedin: 'https://linkedin.com/in/samuel-hulme-423210254',
@@ -173,7 +173,7 @@ const config: SiteConfig = {
   // IMPORTANT: Update giscus.json in the root of the project with your own website URL
   // If you don't want to use Giscus, set this to undefined.
   giscus: {
-    repo: 'ajh123/blog',
+    repo: 'samuelh2005/blog',
     repoId: 'R_kgDOON2lxg',
     category: 'Giscus',
     categoryId: 'DIC_kwDOON2lxs4Cvb3Q',
@@ -282,7 +282,7 @@ const config: SiteConfig = {
         {
           name: "Be Quiet Negotiator",
           description: "A NeoForge client-side mod to allow the client to join vanilla servers without being kicked for using mods.",
-          url: "https://github.com/ajh123/BeQuietNegotiator",
+          url: "https://github.com/samuelh2005/BeQuietNegotiator",
           resourceLinks: [
             {
               name: "Modrinth",
@@ -293,12 +293,12 @@ const config: SiteConfig = {
         {
           name: "Blog",
           description: "The source code for this blog website.",
-          url: "https://github.com/ajh123/blog"
+          url: "https://github.com/samuelh2005/blog"
         },
         {
           name: "Net Bits",
           description: "A Python library for serialising and deserialising binary data structures.",
-          url: "https://github.com/ajh123/netbits",
+          url: "https://github.com/samuelh2005/netbits",
           resourceLinks: [
             {
               name: "PyPI",
@@ -313,7 +313,7 @@ const config: SiteConfig = {
         {
           name: "MetroRail",
           description: "A WIP Minecraft mod for enhancing Minecart railways in Minecraft.",
-          url: "https://github.com/ajh123/MetroRail"
+          url: "https://github.com/samuelh2005/MetroRail"
         }
       ]
     }

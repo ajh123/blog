@@ -19,7 +19,7 @@ I'm an active contributor to several open-source projects and maintain a few of 
 
 I go by several names online, including:
 - Samuel Hulme
-- ajh123 *(which sprung from a typo of my initials)*
+- ajh123 *(which was the former name of my GitHub profile)*
 - samuelh2005
 - samuelh2005-mc *(because YouTube won't let me have samuelh2005)*
 
@@ -27,7 +27,8 @@ I go by several names online, including:
 
 Here are links to my online accounts and profiles:
 
-- Discord: [Miners Online discord server](https://discord.gg/MMwxg32)
-- GitHub: [ajh123](https://github.com/ajh123)
+- Discord: [Miners Online discord server](https://discord.gg/aeRReEaNnm)
+- GitHub: [samuelh2005](https://github.com/samuelh2005)
 - LinkedIn: [Samuel Hulme](https://www.linkedin.com/in/samuel-hulme-123456789/)
 - Youtube: [@samuelh2005-mc](https://www.youtube.com/channel/UC5ZPyhfbqKT96EmYzANku7Q)
+- Modrinth: [samuelh2005](https://modrinth.com/user/samuelh2005)
